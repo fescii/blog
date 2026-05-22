@@ -15,7 +15,7 @@
   <div class="posts-list">
     {{ $pages := .Paginator.Pages }}
     {{ $currentYear := "" }}
-    {{ $globalCounter := 0 }}
+    {{ $globalCounter := mul (sub .Paginator.PageNumber 1) .Paginator.PageSize }}
     {{ $yearCounts := dict }}
     
     {{ range $pages }}
