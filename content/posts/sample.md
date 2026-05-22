@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-date: 2026-05-22T15:00:00+03:00
+date: 2025-01-15T15:00:00+03:00
 draft: false
 tags: ["meta", "blog"]
 ---
