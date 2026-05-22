@@ -5,6 +5,81 @@
 
 @import 'tokens';
 
+/* ── Custom Futuristic Hamburger Icon ─────────────────────────────────────────── */
+.hamburger-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 24px;
+  cursor: pointer;
+  
+  @media only screen and (max-width: 700px) {
+    display: flex;
+  }
+  
+  .hamburger-line {
+    position: relative;
+    height: 2px;
+    background-color: var(--textPrimary);
+    transition: all 0.3s ease;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    &.top {
+      width: 24px;
+      margin-bottom: 6px;
+      
+      &::before {
+        left: -2px;
+        top: -1px;
+      }
+      
+      &::after {
+        right: -2px;
+        top: -1px;
+      }
+    }
+    
+    &.bottom {
+      width: 18px;
+      
+      &::before {
+        left: -2px;
+        top: -1px;
+      }
+      
+      &::after {
+        right: -2px;
+        top: -1px;
+      }
+    }
+  }
+}
+
+// Hamburger animation when menu is open
+#menu-toggle:checked + .menu-button .hamburger-icon {
+  .hamburger-line.top {
+    transform: rotate(45deg) translate(4px, 4px);
+    width: 20px;
+  }
+  
+  .hamburger-line.bottom {
+    transform: rotate(-45deg) translate(4px, -4px);
+    width: 20px;
+  }
+}
+
 /* ── Base reset ─────────────────────────────────────────────────────────────── */
 // hugo-coder sets html to 62.5%; we need 1rem = 16px
 html {
@@ -106,12 +181,12 @@ table {
   }
   
   // Responsive table for mobile
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 700px) {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
     border-radius: var(--radius-md);
-    
+
     th, td {
       padding: var(--space-3) var(--space-4);
     }
@@ -123,21 +198,30 @@ table {
   ul, ol {
     margin: var(--space-6) 0;
     padding-left: var(--space-6);
-    
+
+    @media only screen and (max-width: 700px) {
+      margin: var(--space-4) 0;
+      padding-left: var(--space-4);
+    }
+
     li {
       margin-bottom: var(--space-3);
       line-height: var(--leading-relaxed);
       color: var(--textPrimary);
-      
+
+      @media only screen and (max-width: 700px) {
+        margin-bottom: var(--space-2);
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
-      
+
       a {
         color: var(--primary);
         text-decoration: none;
         transition: color 0.2s ease;
-        
+
         &:hover {
           color: var(--primaryHover);
         }
@@ -204,13 +288,18 @@ body {
   padding-left: var(--container-padding) !important;
   padding-right: var(--container-padding) !important;
   margin: 0 auto !important;
+
+  @media only screen and (max-width: 700px) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 }
 
 .content {
   margin-top: var(--space-4) !important;
   margin-bottom: var(--space-8) !important;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 700px) {
     margin-top: var(--space-2) !important;
     margin-bottom: var(--space-4) !important;
   }
@@ -221,6 +310,10 @@ body {
     h1 {
       font-size: var(--text-3xl) !important;
       line-height: var(--leading-tight) !important;
+
+      @media only screen and (max-width: 700px) {
+        font-size: var(--text-2xl) !important;
+      }
     }
   }
 }
@@ -239,6 +332,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: var(--space-8) !important;
   margin-bottom: var(--space-4) !important;
   line-height: var(--leading-tight) !important;
+
+  @media only screen and (max-width: 700px) {
+    margin-top: var(--space-6) !important;
+    margin-bottom: var(--space-3) !important;
+  }
 }
 
 h1 { font-size: var(--text-3xl) !important; }
@@ -247,6 +345,15 @@ h3 { font-size: var(--text-xl) !important; }
 h4 { font-size: var(--text-lg) !important; }
 h5 { font-size: var(--text-base) !important; }
 h6 { font-size: var(--text-sm) !important; }
+
+@media only screen and (max-width: 700px) {
+  h1 { font-size: var(--text-2xl) !important; }
+  h2 { font-size: var(--text-xl) !important; }
+  h3 { font-size: var(--text-lg) !important; }
+  h4 { font-size: var(--text-base) !important; }
+  h5 { font-size: var(--text-sm) !important; }
+  h6 { font-size: var(--text-xs) !important; }
+}
 
 .centered {
   .error {
@@ -298,18 +405,31 @@ h6 { font-size: var(--text-sm) !important; }
   list-style: none !important;
   padding-left: 0 !important;
   margin: var(--space-6) 0 !important;
-  
+
+  @media only screen and (max-width: 700px) {
+    margin: var(--space-4) 0 !important;
+  }
+
   li {
     padding-left: 0 !important;
     margin-bottom: var(--space-4) !important;
-    
+
+    @media only screen and (max-width: 700px) {
+      margin-bottom: var(--space-3) !important;
+    }
+
     &::before {
       content: "•";
       color: var(--primary);
       margin-right: var(--space-3);
       font-size: var(--text-lg);
+
+      @media only screen and (max-width: 700px) {
+        font-size: var(--text-base);
+        margin-right: var(--space-2);
+      }
     }
-    
+
     a {
       font-size: var(--text-lg) !important;
       font-weight: var(--weight-medium) !important;
@@ -319,11 +439,45 @@ h6 { font-size: var(--text-sm) !important; }
       background-color: var(--surfaceSunken) !important;
       transition: all 0.2s ease !important;
       display: inline-block !important;
-      
+
+      @media only screen and (max-width: 700px) {
+        font-size: var(--text-base) !important;
+        padding: var(--space-2) var(--space-3) !important;
+      }
+
       &:hover {
         background-color: var(--primarySubtle) !important;
         color: var(--primaryHover) !important;
       }
+    }
+  }
+}
+
+// Projects page content styling
+.projects-content {
+  @media only screen and (max-width: 700px) {
+    h3 {
+      font-size: var(--text-lg) !important;
+      margin-top: var(--space-5) !important;
+    }
+
+    p {
+      font-size: var(--text-sm) !important;
+    }
+
+    ul {
+      li {
+        font-size: var(--text-sm) !important;
+      }
+    }
+  }
+}
+
+// About page content styling
+.list {
+  @media only screen and (max-width: 700px) {
+    p {
+      font-size: var(--text-sm) !important;
     }
   }
 }
@@ -335,16 +489,21 @@ h6 { font-size: var(--text-sm) !important; }
   gap: var(--space-8);
   margin-top: var(--space-8) !important;
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 700px) {
     grid-template-columns: 1fr;
     gap: var(--space-6);
+    margin-top: var(--space-4) !important;
   }
-  
+
   .home-left {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
     align-items: center;
+
+    @media only screen and (max-width: 700px) {
+      gap: var(--space-4);
+    }
   }
   
   .home-right {
@@ -368,13 +527,22 @@ h6 { font-size: var(--text-sm) !important; }
       flex-direction: column;
       align-items: center;
       gap: var(--space-4);
-      
+
+      @media only screen and (max-width: 700px) {
+        gap: var(--space-3);
+      }
+
       .avatar {
         img {
           width: 120px !important;
           height: 120px !important;
           border-radius: 50% !important;
           object-fit: cover !important;
+
+          @media only screen and (max-width: 700px) {
+            width: 100px !important;
+            height: 100px !important;
+          }
         }
       }
       
@@ -405,11 +573,15 @@ h6 { font-size: var(--text-sm) !important; }
   .profile-section {
     width: 100%;
     margin-top: var(--space-6);
-    
+
+    @media only screen and (max-width: 700px) {
+      margin-top: var(--space-4);
+    }
+
     .section-title {
       display: none !important;
     }
-    
+
     .profile-info {
       .profile-description {
         font-size: var(--text-base);
@@ -417,6 +589,10 @@ h6 { font-size: var(--text-sm) !important; }
         color: var(--textPrimary);
         margin: 0;
         text-align: center;
+
+        @media only screen and (max-width: 700px) {
+          font-size: var(--text-sm);
+        }
       }
     }
   }
@@ -424,17 +600,25 @@ h6 { font-size: var(--text-sm) !important; }
   .tags-section {
     width: 100%;
     margin-top: var(--space-6);
-    
+
+    @media only screen and (max-width: 700px) {
+      margin-top: var(--space-4);
+    }
+
     .section-title {
       display: none !important;
     }
-    
+
     .tags-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-2);
       justify-content: center;
-      
+
+      @media only screen and (max-width: 700px) {
+        gap: var(--space-1);
+      }
+
       .tag-link {
         padding: var(--space-1) var(--space-3);
         border: 1px solid var(--border);
@@ -446,7 +630,12 @@ h6 { font-size: var(--text-sm) !important; }
         font-weight: var(--weight-medium);
         text-decoration: none;
         transition: all 0.2s ease;
-        
+
+        @media only screen and (max-width: 700px) {
+          padding: var(--space-1) var(--space-2);
+          font-size: 0.7rem;
+        }
+
         &:hover {
           border-color: var(--primary);
           color: var(--primary);
@@ -461,18 +650,22 @@ h6 { font-size: var(--text-sm) !important; }
   .title {
     display: none !important;
   }
-  
+
   .posts-list {
     display: flex;
     flex-direction: column;
     gap: 0;
     margin-top: 0 !important;
   }
-  
+
   .year-group {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
+
+    @media only screen and (max-width: 700px) {
+      gap: var(--space-4);
+    }
   }
   
   .year-header {
@@ -485,16 +678,25 @@ h6 { font-size: var(--text-sm) !important; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
+    @media only screen and (max-width: 700px) {
+      padding: var(--space-1) 0;
+      font-size: var(--text-sm);
+    }
+
     .year-title {
       color: var(--textTertiary);
     }
-    
+
     .year-count {
       font-family: var(--font-mono);
       font-size: var(--text-sm);
       font-weight: var(--weight-medium);
       color: var(--textTertiary);
+
+      @media only screen and (max-width: 700px) {
+        font-size: var(--text-xs);
+      }
     }
   }
   
@@ -502,6 +704,10 @@ h6 { font-size: var(--text-sm) !important; }
     display: flex;
     flex-direction: column;
     gap: 25px;
+
+    @media only screen and (max-width: 700px) {
+      gap: 20px;
+    }
   }
   
   .post-item {
@@ -512,7 +718,11 @@ h6 { font-size: var(--text-sm) !important; }
     background: none;
     border: none;
     transition: all 0.2s ease;
-    
+
+    @media only screen and (max-width: 700px) {
+      gap: var(--space-3);
+    }
+
     .post-number {
       font-family: var(--font-mono);
       font-size: var(--text-sm);
@@ -522,8 +732,13 @@ h6 { font-size: var(--text-sm) !important; }
       text-align: right;
       line-height: 1.6;
       transition: opacity 0.2s ease;
+
+      @media only screen and (max-width: 700px) {
+        font-size: var(--text-xs);
+        min-width: 24px;
+      }
     }
-    
+
     .post-content {
       flex: 1;
       display: flex;
@@ -537,17 +752,22 @@ h6 { font-size: var(--text-sm) !important; }
         font-family: var(--font-mono);
         font-size: var(--text-xs);
         color: var(--textTertiary);
-        
+
+        @media only screen and (max-width: 700px) {
+          font-size: 0.65rem;
+          gap: var(--space-1);
+        }
+
         .post-views {
           color: var(--textTertiary);
           font-weight: var(--weight-medium);
         }
-        
+
         .post-date {
           color: var(--textTertiary);
           font-weight: var(--weight-medium);
         }
-        
+
         .meta-separator {
           color: var(--textTertiary);
           font-weight: var(--weight-medium);
@@ -563,12 +783,16 @@ h6 { font-size: var(--text-sm) !important; }
         text-decoration: none;
         line-height: var(--leading-tight);
         transition: color 0.2s ease;
-        
+
+        @media only screen and (max-width: 700px) {
+          font-size: var(--text-sm);
+        }
+
         a {
           color: var(--textTertiary);
           text-decoration: none;
           transition: color 0.2s ease;
-          
+
           &:hover {
             color: var(--primary);
           }
@@ -583,19 +807,24 @@ h6 { font-size: var(--text-sm) !important; }
         font-size: var(--text-sm);
         color: var(--textMuted);
         overflow: hidden;
-        
+
+        @media only screen and (max-width: 700px) {
+          font-size: var(--text-xs);
+          gap: var(--space-1);
+        }
+
         .post-reading {
           color: var(--textMuted);
           font-weight: var(--weight-medium);
           flex-shrink: 0;
         }
-        
+
         .meta-separator {
           color: var(--textTertiary);
           font-weight: var(--weight-medium);
           flex-shrink: 0;
         }
-        
+
         .post-tags {
           display: flex;
           gap: var(--space-2);
@@ -604,6 +833,10 @@ h6 { font-size: var(--text-sm) !important; }
           white-space: nowrap;
           flex: 1;
           min-width: 0;
+
+          @media only screen and (max-width: 700px) {
+            gap: var(--space-1);
+          }
           
           .post-tag {
             color: var(--textMuted);
@@ -614,7 +847,11 @@ h6 { font-size: var(--text-sm) !important; }
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100px;
-            
+
+            @media only screen and (max-width: 700px) {
+              max-width: 60px;
+            }
+
             &:hover {
               color: var(--primary);
             }
@@ -626,7 +863,11 @@ h6 { font-size: var(--text-sm) !important; }
   
   .view-all {
     margin-top: var(--space-4);
-    
+
+    @media only screen and (max-width: 700px) {
+      margin-top: var(--space-3);
+    }
+
     .btn {
       display: block;
       width: 100%;
@@ -641,7 +882,12 @@ h6 { font-size: var(--text-sm) !important; }
       font-size: var(--text-sm);
       text-align: center;
       transition: all 0.2s ease;
-      
+
+      @media only screen and (max-width: 700px) {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-xs);
+      }
+
       &:hover {
         color: var(--primary);
         border-color: var(--primary);
@@ -663,62 +909,44 @@ h6 { font-size: var(--text-sm) !important; }
   
   p {
     margin-bottom: var(--space-4) !important;
+
+    @media only screen and (max-width: 700px) {
+      margin-bottom: var(--space-3) !important;
+    }
   }
-  
+
   ul {
     list-style: none !important;
     padding-left: 0 !important;
     margin: var(--space-4) 0 !important;
-    
+
+    @media only screen and (max-width: 700px) {
+      margin: var(--space-3) 0 !important;
+    }
+
     li {
       padding-left: 0 !important;
       margin-bottom: var(--space-2) !important;
-      
+
+      @media only screen and (max-width: 700px) {
+        margin-bottom: var(--space-2) !important;
+      }
+
       &::before {
         content: "•";
         color: var(--primary);
         margin-right: var(--space-3);
         font-size: var(--text-base);
+
+        @media only screen and (max-width: 700px) {
+          margin-right: var(--space-2);
+          font-size: var(--text-sm);
+        }
       }
-      
+
       strong {
         color: var(--primary);
         font-weight: var(--weight-semibold);
-      }
-    }
-  }
-}
-
-// Contact page specific list styling
-.contact-list {
-  list-style: none !important;
-  padding-left: 0 !important;
-  margin: var(--space-6) 0 !important;
-  
-  li {
-    padding-left: 0 !important;
-    margin-bottom: var(--space-4) !important;
-    
-    &::before {
-      content: "•";
-      color: var(--primary);
-      margin-right: var(--space-3);
-      font-size: var(--text-lg);
-    }
-    
-    a {
-      font-size: var(--text-lg) !important;
-      font-weight: var(--weight-medium) !important;
-      color: var(--primary) !important;
-      padding: var(--space-3) var(--space-4) !important;
-      border-radius: var(--radius-md) !important;
-      background-color: var(--surfaceSunken) !important;
-      transition: all 0.2s ease !important;
-      display: inline-block !important;
-      
-      &:hover {
-        background-color: var(--primarySubtle) !important;
-        color: var(--primaryHover) !important;
       }
     }
   }
@@ -811,7 +1039,7 @@ a {
       &:hover { color: var(--primary) !important; }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 700px) {
       position: absolute !important;
       top: var(--space-12) !important;
       left: 0 !important;
@@ -862,7 +1090,7 @@ a {
     line-height: normal !important;
     cursor: pointer !important;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 700px) {
       display: flex !important;
     }
   }
@@ -888,7 +1116,7 @@ a {
     gap: var(--space-4) !important;
     width: 100% !important;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 700px) {
       flex-direction: column !important;
       align-items: flex-start !important;
       text-align: left !important;
@@ -1296,7 +1524,7 @@ pre:hover .code-copy-btn { opacity: 1; }
   background-color: var(--surface) !important;
   border-bottom: 1px solid var(--border);
   border-radius: 0 !important;
-  padding: var(--space-3) 0;
+  padding: var(--space-6) 0;
   width: 100%;
   position: relative;
   z-index: 10;

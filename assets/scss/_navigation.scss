@@ -29,20 +29,23 @@
     margin-bottom: 0;
     margin-top: 0;
 
-    @media only screen and (max-width: 768px) {
-      position: relative;
-      top: 2rem;
+    @media only screen and (max-width: 700px) {
+      position: absolute;
+      top: 100%;
+      left: 0;
       right: 0;
-      z-index: 5;
+      z-index: 100;
       visibility: hidden;
       opacity: 0;
-      padding: 0;
+      padding: var(--space-4) 0;
       max-height: 0;
       width: 100%;
-      background-color: $bg-color;
-      border-top: solid 2px $alt-bg-color;
-      border-bottom: solid 2px $alt-bg-color;
-      transition: opacity 0.25s, max-height 0.15s linear;
+      background-color: var(--background);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.3s ease, max-height 0.3s ease, visibility 0.3s ease;
+      overflow: hidden;
     }
 
     .navigation-item {
@@ -50,13 +53,15 @@
       margin: 0;
       position: relative;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 700px) {
         float: none !important;
         text-align: center;
+        padding: var(--space-3) 0;
 
         a,
         span {
-          line-height: 5rem;
+          line-height: 1.5;
+          font-size: 1.2rem;
         }
       }
 
@@ -68,15 +73,15 @@
     }
 
     .separator {
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 700px) {
         display: none;
       }
     }
 
     .menu-separator {
-      @media only screen and (max-width: 768px) {
-        border-top: 2px solid $fg-color;
-        margin: 0 8rem;
+      @media only screen and (max-width: 700px) {
+        border-top: 1px solid var(--border);
+        margin: var(--space-2) var(--space-6);
 
         span {
           display: none;
@@ -98,19 +103,21 @@
   #menu-toggle {
     display: none;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 700px) {
       display: initial;
       position: relative;
       visibility: hidden;
 
-      &:checked+label>i {
-        color: $alt-bg-color;
+      &:checked+label .hamburger-icon {
+        .hamburger-line {
+          background-color: var(--primary);
+        }
       }
 
       &:checked+label+ul {
         visibility: visible;
         opacity: 1;
-        max-height: 100rem;
+        max-height: 500px;
       }
 
       &:focus-visible+label {
@@ -122,19 +129,10 @@
   .menu-button {
     display: none;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 700px) {
       position: relative;
       display: block;
-      font-size: 2.4rem;
-      font-weight: 400;
-    }
-
-    i {
-
-      &:hover,
-      &:focus {
-        color: $alt-fg-color;
-      }
+      padding: var(--space-2);
     }
   }
 
