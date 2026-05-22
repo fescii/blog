@@ -11,6 +11,9 @@ enableRobotsTXT = true
   noClasses = false
   tabWidth = 2
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
   author = "Fredrick Femar"
   description = "A premium blog powered by Hugo."
@@ -72,3 +75,7 @@ enableRobotsTXT = true
   name = "Contact"
   weight = 4
   url = "/contact/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

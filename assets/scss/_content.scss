@@ -13,14 +13,14 @@
     margin-bottom: var(--space-4);
 
     h1.title {
-      font-size: var(--text-3xl);
-      line-height: var(--leading-tight);
+      font-size: var(--text-2xl) !important;
+      line-height: var(--leading-normal) !important;
       margin: 0 !important;
       margin-bottom: var(--space-4) !important;
 
       @media only screen and (max-width: 768px) {
-        font-size: var(--text-2xl);
-        line-height: var(--leading-tight);
+        font-size: var(--text-base) !important;
+        line-height: var(--leading-normal);
       }
     }
   }
@@ -56,6 +56,8 @@
     p {
       text-align: justify;
       text-justify: auto;
+      text-wrap: pretty;
+      letter-spacing: 0.01em;
       -ms-hyphens: auto;
       -webkit-hyphens: auto;
       hyphens: auto;

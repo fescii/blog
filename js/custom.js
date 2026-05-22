@@ -148,19 +148,27 @@
     const postItems = document.querySelectorAll('.post-item');
     if (!filterContainer || postItems.length === 0) return;
 
-    // Collect all unique tags
-    const allTags = new Set();
+    // Collect all unique tags and count their frequency
+    const tagCounts = {};
     postItems.forEach(item => {
       const tagsAttr = item.getAttribute('data-tags');
       if (tagsAttr) {
         tagsAttr.split(',').forEach(tag => {
           const trimmed = tag.trim().toLowerCase();
-          if (trimmed) allTags.add(trimmed);
+          if (trimmed) {
+            tagCounts[trimmed] = (tagCounts[trimmed] || 0) + 1;
+          }
         });
       }
     });
 
-    if (allTags.size === 0) {
+    // Sort tags by frequency (descending) and take top 12
+    const sortedTags = Object.entries(tagCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 12)
+      .map(([tag]) => tag);
+
+    if (sortedTags.length === 0) {
       filterContainer.style.display = 'none';
       return;
     }
@@ -172,8 +180,8 @@
     allPill.dataset.filter = 'all';
     filterContainer.appendChild(allPill);
 
-    // Create custom tag pills sorted alphabetically
-    Array.from(allTags).sort().forEach(tag => {
+    // Create custom tag pills sorted by frequency
+    sortedTags.forEach(tag => {
       const pill = document.createElement('button');
       pill.className = 'filter-pill';
       pill.textContent = `#${tag}`;

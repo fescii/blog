@@ -31,8 +31,8 @@ But the tradeoff is zero dependency debt. The code you write against standard br
 
 ## References
 
-*   **WHATWG HTML Living Standard:** [html.spec.whatwg.org](https://html.spec.whatwg.org)
-*   **WICG Navigation API Spec:** [github.com/WICG/navigation-api](https://github.com/WICG/navigation-api)
-*   **WICG URL Pattern API Spec:** [github.com/WICG/urlpattern](https://github.com/WICG/urlpattern)
-*   **WICG Prioritized Task Scheduling:** [wicg.github.io/scheduling-apis](https://wicg.github.io/scheduling-apis)
-*   **MDN Web Components:** [developer.mozilla.org/en-US/docs/Web/API/Web_components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)
+*   [**WHATWG HTML Living Standard**](https://html.spec.whatwg.org)
+*   [**WICG Navigation API Spec**](https://github.com/WICG/navigation-api)
+*   [**WICG URL Pattern API Spec**](https://github.com/WICG/urlpattern)
+*   [**WICG Prioritized Task Scheduling**](https://wicg.github.io/scheduling-apis)
+*   [**MDN Web Components**](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)

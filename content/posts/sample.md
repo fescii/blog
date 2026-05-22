@@ -1,6 +1,6 @@
 ---
 title: "Building High-End Interactive Components with Modern Javascript"
-date: 2026-05-21T23:50:00+03:00
+date: 2025-05-21T23:50:00+03:00
 draft: false
 description: "An interactive exploration of client-side enhancements, premium typography, and accessibility best practices."
 categories: ["Engineering"]
