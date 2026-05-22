@@ -704,7 +704,7 @@ h6 { font-size: var(--text-xs) !important; }
 
 			.tag-link {
 				padding: var(--space-1) var(--space-3);
-				border: 1px solid var(--border);
+				border: 1px dashed var(--border);
 				background: var(--surface);
 				color: var(--textPrimary);
 				border-radius: var(--radius-md);

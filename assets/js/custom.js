@@ -230,7 +230,7 @@
 
       // First, reset all items to visible
       postItems.forEach(item => {
-        item.style.display = 'flex';
+        item.classList.remove('hidden');
       });
 
       // Then apply filter if not "all"
@@ -242,13 +242,7 @@
           
           if (!matches) {
             item.classList.add('hidden');
-          } else {
-            item.classList.remove('hidden');
           }
-        });
-      } else {
-        postItems.forEach(item => {
-          item.classList.remove('hidden');
         });
       }
 
