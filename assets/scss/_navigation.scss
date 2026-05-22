@@ -1,6 +1,10 @@
 .navigation {
   height: 6rem;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background);
 
   a,
   span {

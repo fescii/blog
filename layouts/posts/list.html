@@ -94,23 +94,13 @@
             <article class="post-item" data-tags="{{ $tagList }}">
               <div class="post-number">{{ printf "%02d" $globalCounter }}</div>
               <div class="post-content">
+                <a class="post-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
                 <div class="post-meta-top">
                   <span class="post-views" data-goatcounter-page="{{ .RelPermalink }}">-- views</span>
                   <span class="meta-separator">•</span>
                   <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02" }}</time>
-                </div>
-                <a class="post-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-                <div class="post-meta-bottom">
+                  <span class="meta-separator">•</span>
                   <span class="post-reading">{{ .ReadingTime }} min read</span>
-                  {{ if .Params.tags }}
-                    <span class="meta-separator">•</span>
-                    <span class="post-tags">
-                      {{ range $i, $tag := .Params.tags }}
-                        {{ if $i }}{{ end }}
-                        <a class="post-tag" href="{{ "tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
-                      {{ end }}
-                    </span>
-                  {{ end }}
                 </div>
               </div>
             </article>

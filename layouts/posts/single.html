@@ -61,20 +61,20 @@
               <span class="post-views" data-goatcounter-page="{{ .RelPermalink }}">-- views</span>
               <span class="meta-separator">•</span>
               <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+              <span class="meta-separator">•</span>
+              <span class="post-reading">{{ .ReadingTime }} min read</span>
             </div>
 
-            <div class="post-meta-bottom">
-              <span class="post-reading">{{ .ReadingTime }} min read</span>
-              {{ if .Params.tags }}
-                <span class="meta-separator">•</span>
-                <span class="post-tags">
-                  {{ range $i, $tag := .Params.tags }}
-                    {{ if $i }}{{ end }}
-                    <a class="post-tag" href="{{ "tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
-                  {{ end }}
-                </span>
-              {{ end }}
+            {{ if .Params.tags }}
+            <div class="post-tags-container">
+              <div class="post-tags">
+                {{ range $i, $tag := .Params.tags }}
+                  {{ if $i }}{{ end }}
+                  <a class="post-tag" href="{{ "tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
+                {{ end }}
+              </div>
             </div>
+            {{ end }}
           </header>
 
           {{ partial "toc.html" . }}
@@ -86,16 +86,13 @@
             {{ .Content }}
           </div>
 
-          <footer>
-            {{ partial "posts/series.html" . }}
-            {{ partial "posts/disqus.html" . }}
-            {{ partial "posts/commento.html" . }}
-            {{ partial "posts/utterances.html" . }}
-            {{ partial "posts/giscus.html" . }}
-            {{ partial "posts/mastodon.html" . }}
-            {{ partial "posts/telegram.html" . }}
-            {{ partial "posts/cusdis.html" . }}
-          </footer>
+          <div>
+            {{ if not .Params.disableComments }}
+                <section class="post-comments">
+                    {{ partial "comments.html" . }}
+                </section>
+            {{ end }}
+          </div>
         </article>
 
         {{ partial "posts/math.html" . }}

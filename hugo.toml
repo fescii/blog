@@ -45,19 +45,7 @@ enableRobotsTXT = true
     filename = "sitemap.xml"
     priority = 0.5
 
-  [params.giscus]
-    repo = "fescii/femar"
-    repoId = "R_kgDOXXXXXX"
-    category = "Announcements"
-    categoryId = "DIC_kwDOXXXXXX"
-    mapping = "pathname"
-    strict = "0"
-    reactionsEnabled = "1"
-    emitMetadata = "0"
-    inputPosition = "bottom"
-    theme = "preferred_color_scheme"
-    lang = "en"
-    loading = "lazy"
+
 
 [outputs]
   home = ["HTML", "RSS"]
