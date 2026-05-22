@@ -110,4 +110,4 @@ This project uses the hugo-coder theme (Apache 2.0 License) with custom modifica
 
 ## Author
 
-Fredrick Femar - [femar.blog](https://femar.blog)
+Fredrick Femar - [femar.aduki.org](https://femar.aduki.org)
