@@ -814,10 +814,6 @@ h6 { font-size: var(--text-xs) !important; }
 			line-height: 1.6;
 			transition: opacity 0.2s ease;
 			flex-shrink: 0;
-
-			@media only screen and (max-width: 700px) {
-				min-width: 24px;
-			}
 		}
 
 		.post-content {
