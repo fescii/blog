@@ -1,25 +1,26 @@
 .content {
   flex: 1;
   display: flex;
-  margin-top: 1.6rem;
-  margin-bottom: 3.2rem;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
   @media only screen and (max-width: 768px) {
-    margin-top: 1rem;
-    margin-bottom: 1.6rem;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
   }
 
   header {
-    margin-top: 6.4rem;
-    margin-bottom: 3.2rem;
+    margin-top: 0;
+    margin-bottom: var(--space-4);
 
-    h1 {
-      font-size: 4.2rem;
-      line-height: 4.6rem;
-      margin: 0;
+    h1.title {
+      font-size: var(--text-3xl);
+      line-height: var(--leading-tight);
+      margin: 0 !important;
+      margin-bottom: var(--space-4) !important;
 
       @media only screen and (max-width: 768px) {
-        font-size: 4rem;
-        line-height: 4.4rem;
+        font-size: var(--text-2xl);
+        line-height: var(--leading-tight);
       }
     }
   }
@@ -41,13 +42,13 @@
     }
 
     footer {
-      margin-top: 4rem;
+      margin-top: var(--space-8);
 
       .see-also {
-        margin: 3.2rem 0;
+        margin: var(--space-6) 0;
 
         h3 {
-          margin: 3.2rem 0;
+          margin: var(--space-6) 0;
         }
       }
     }
@@ -63,31 +64,31 @@
 
   .post {
     .post-title {
-      margin-bottom: 0.75em;
+      margin-bottom: var(--space-2);
     }
 
     .post-meta {
       i {
         text-align: center;
-        width: 1.6rem;
+        width: var(--space-4);
         margin-left: 0;
-        margin-right: 0.5rem;
+        margin-right: var(--space-2);
       }
 
       .date {
         .posted-on {
           margin-left: 0;
-          margin-right: 1.5rem;
+          margin-right: var(--space-6);
         }
       }
 
       .tags {
         .tag {
           display: inline-block;
-          padding: 0.3rem 0.6rem;
+          padding: var(--space-1) var(--space-2);
           background-color: $alt-bg-color;
-          border-radius: 0.6rem;
-          line-height: 1.5em;
+          border-radius: var(--radius-md);
+          line-height: var(--leading-normal);
 
           a {
             color: $fg-color;
@@ -109,7 +110,7 @@
   figcaption p {
     text-align: center;
     font-style: italic;
-    font-size: 1.6rem;
+    font-size: var(--text-sm);
     margin: 0;
   }
 }
@@ -120,29 +121,29 @@
   border-radius: 50%;
 
   @media only screen and (max-width: 768px) {
-    width: 17rem;
+    width: 16rem;
   }
 }
 
 .list {
   ul {
-    margin: 3.2rem 0 3.2rem 0;
+    margin: var(--space-6) 0 var(--space-6) 0;
     list-style: none;
     padding: 0;
 
     li {
-      font-size: 1.8rem;
+      font-size: var(--text-base);
 
       @media only screen and (max-width: 768px) {
-        margin: 1.6rem 0 1.6rem 0;
+        margin: var(--space-4) 0 var(--space-4) 0;
       }
 
       .date {
         display: inline-block;
         flex: 1;
-        width: 20rem;
+        width: 12.5rem;
         text-align: right;
-        margin-right: 3rem;
+        margin-right: var(--space-6);
 
         @media only screen and (max-width: 768px) {
           display: block;
@@ -151,7 +152,7 @@
       }
 
       .title {
-        font-size: 1.8rem;
+        font-size: var(--text-base);
         flex: 2;
         color: $fg-color;
         font-family: $font-family;
@@ -183,23 +184,23 @@
     text-align: center;
 
     h1 {
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-2);
     }
 
     h2 {
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-      font-size: 2.4rem;
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xl);
 
       @media only screen and (max-width: 768px) {
-        font-size: 2rem;
+        font-size: var(--text-lg);
       }
     }
 
     ul {
       list-style: none;
-      margin: 3rem 0 1rem 0;
+      margin: var(--space-6) 0 var(--space-2) 0;
       padding: 0;
       cursor: pointer;
 
@@ -210,9 +211,9 @@
         a {
           color: $fg-color;
           text-transform: uppercase;
-          margin-left: 1rem;
-          margin-right: 1rem;
-          font-size: 1.6rem;
+          margin-left: var(--space-4);
+          margin-right: var(--space-4);
+          font-size: var(--text-base);
 
           &:hover,
           &:focus {
@@ -220,7 +221,7 @@
           }
 
           @media only screen and (max-width: 768px) {
-            font-size: 1.5rem;
+            font-size: var(--text-sm);
           }
         }
       }
@@ -231,22 +232,22 @@
     text-align: center;
 
     h1 {
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-      font-size: 4.6rem;
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-3xl);
 
       @media only screen and (max-width: 768px) {
-        font-size: 3.2rem;
+        font-size: var(--text-2xl);
       }
     }
 
     h2 {
-      margin-top: 2rem;
-      margin-bottom: 3.2rem;
-      font-size: 3.2rem;
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-2xl);
 
       @media only screen and (max-width: 768px) {
-        font-size: 2.8rem;
+        font-size: var(--text-xl);
       }
     }
   }

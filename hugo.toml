@@ -5,7 +5,11 @@ title = 'Femar'
 enableRobotsTXT = true
 
 [markup.highlight]
-  style = "github-dark"
+  style = "monokai"
+  lineNos = false
+  lineNumbersInTable = false
+  noClasses = false
+  tabWidth = 2
 
 [params]
   author = "Fredrick Femar"
@@ -14,8 +18,27 @@ enableRobotsTXT = true
   hideColorSchemeToggle = false
   customSCSS = ["scss/custom.scss"]
   customJS = ["js/custom.js"]
+
   activeTheme = "midnight_hearth"
   avatarURL = "images/me.jpg"
+  
+  [[params.social]]
+    name = "GitHub"
+    icon = "fa-brands fa-github"
+    url = "https://github.com/fescii"
+    weight = 1
+  
+  [[params.social]]
+    name = "X"
+    icon = "fa-brands fa-x-twitter"
+    url = "https://x.com/fescii"
+    weight = 2
+  
+  [[params.social]]
+    name = "LinkedIn"
+    icon = "fa-brands fa-linkedin"
+    url = "https://linkedin.com/in/iamfemar"
+    weight = 3
 
   [params.giscus]
     repo = "fescii/femar"

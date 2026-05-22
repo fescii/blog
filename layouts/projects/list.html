@@ -38,7 +38,7 @@
     {{ partial "themes.html" . }}
 
     <div class="content">
-      <section class="container list">
+      <section class="container projects-content">
         <header>
           <h1 class="title">
             <a class="title-link" href="{{ .Permalink | safeURL }}">
@@ -56,7 +56,7 @@
   {{ if .Site.Params.disableDefaultJsScripts }}
   {{ if not .Site.Params.hideColorSchemeToggle }}
   {{ errorf "Invalid configuration. Default JS scripts are disabled, but 'hideColorSchemeToggle' is false." }}
-  {{end}}
+{{end}}
   {{ else if hugo.IsServer }}
   {{ $script := resources.Get "js/coder.js" }}
   <script src="{{ $script.RelPermalink }}"></script>
@@ -77,6 +77,10 @@
 
   {{ template "_internal/google_analytics.html" . }}
   {{- partial "body/extensions" . -}}
+  
+  <!-- GoatCounter Analytics -->
+  <script data-goatcounter="https://femar.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

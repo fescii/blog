@@ -25,36 +25,8 @@
   function initThemeSwitcher() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'midnight_hearth';
 
-    // --- Initialize color scheme from localStorage or system preference ---
-    function initColorScheme() {
-      const savedMode = localStorage.getItem('color-mode');
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      if (savedMode) {
-        // Use saved preference
-        document.documentElement.setAttribute('data-mode', savedMode);
-      } else {
-        // Use system preference
-        document.documentElement.setAttribute('data-mode', systemPrefersDark ? 'dark' : 'light');
-      }
-    }
-    
-    initColorScheme();
-
-    // --- Footer Dark/Light Toggle ---
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    if (darkModeToggle) {
-      darkModeToggle.addEventListener('click', function() {
-        const currentMode = document.documentElement.getAttribute('data-mode') || 'dark';
-        const newMode = currentMode === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-mode', newMode);
-        localStorage.setItem('color-mode', newMode);
-      });
-    }
-
     // --- Page Theme Cards Interactive Syncing ---
     const themeCards = document.querySelectorAll('.theme-card');
-    
     themeCards.forEach(card => {
       if (card.dataset.theme === currentTheme) {
         card.classList.add('active');
@@ -230,19 +202,31 @@
         postItems.forEach(item => {
           const itemTags = item.getAttribute('data-tags') || '';
           const tagArray = itemTags.split(',').map(tag => tag.trim().toLowerCase());
-          const matches = tagArray.includes(filterValue.toLowerCase());
-          
-          if (!matches) {
-            item.classList.add('hidden');
-          } else {
-            item.classList.remove('hidden');
+          if (!tagArray.includes(filterValue.toLowerCase())) {
+            item.style.display = 'none';
           }
         });
-      } else {
-        postItems.forEach(item => {
-          item.classList.remove('hidden');
-        });
       }
+
+      // Hide or show year groups based on whether they contain visible items
+      document.querySelectorAll('.year-group').forEach(group => {
+        const items = group.querySelectorAll('.post-item');
+        let visibleCount = 0;
+        
+        items.forEach(item => {
+          if (item.style.display !== 'none') {
+            visibleCount++;
+          }
+        });
+
+        console.log('Year group check:', { itemsLength: items.length, visibleCount, willHide: items.length > 0 && visibleCount === 0 });
+
+        if (items.length > 0 && visibleCount === 0) {
+          group.style.display = 'none';
+        } else {
+          group.style.display = 'flex';
+        }
+      });
 
       // Also hide empty years if no items are visible at all
       const yearGroups = document.querySelectorAll('.year-group');
@@ -301,13 +285,6 @@
           element.textContent = '-- views';
         });
     });
-  }
-
-  /* ══════════════════════════════════════════════════════════════════════════════
-     6. Home Page Posts Filter
-     ══════════════════════════════════════════════════════════════════════════════ */
-  function initHomePostsFilter() {
-    // No longer needed - filter buttons removed
   }
 
 })();

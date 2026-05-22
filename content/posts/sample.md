@@ -42,7 +42,6 @@ A solid typography system is the foundation of high-end design. By combining **P
 
 ### Best Practices for Visual Hierarchy
 
-> [!NOTE]
 > Editorial designs feel premium when they maintain generous white space and low-contrast borders. Avoid harsh pure black outlines.
 
 When styling heading elements, using a left accent bar grounded in the theme's `--primary` color draws the reader's eye naturally down the page.

@@ -15,6 +15,7 @@
   --text-2xs  : 0.6875rem;  /* 11px  — micro labels, card desc              */
   --text-xs   : 0.75rem;    /* 12px  — tags, chips, filter pills             */
   --text-sm   : 0.8125rem;  /* 13px  — card title, meta text, footer         */
+  --text-md   : 0.98rem;
   --text-base : 1rem;       /* 16px  — body, post content, nav links         */
   --text-lg   : 1.125rem;   /* 18px  — nav site title, large labels          */
   --text-xl   : 1.375rem;   /* 22px  — year headings, section titles         */
@@ -89,17 +90,56 @@
   --blockquoteBackground : #0e1830;
   --selection           : #1c3060;
   --scrollbar           : #182040;
+  --tableBackground      : #0e1428;
+  --tableHeaderBackground : #162040;
+  --tableHeaderText     : #dce8fc;
+  --tableRowBackground   : #0e1428;
+  --tableRowHover        : #162040;
+  --tableBorder          : #0f1420;
+  --tableText           : #dce8fc;
+}
+
+/* Default light mode (when no data-mode is set or data-mode="light") */
+html[data-mode="light"] {
+  --tableBackground      : #eaecf4;
+  --tableHeaderBackground : #dfe3f0;
+  --tableHeaderText     : #0e1420;
+  --tableRowBackground   : #eaecf4;
+  --tableRowHover        : #dfe3f0;
+  --tableBorder          : #d0d8f0;
+  --tableText           : #0e1420;
+}
+
+/* Default light mode (when no data-mode is set or data-mode="light") */
+html[data-mode="light"] {
+  --tableBackground      : #eaecf4;
+  --tableHeaderBackground : #dfe3f0;
+  --tableHeaderText     : #0e1420;
+  --tableRowBackground   : #eaecf4;
+  --tableRowHover        : #dfe3f0;
+  --tableBorder          : #d0d8f0;
+  --tableText           : #0e1420;
+}
+
+/* Default light mode (when no data-mode is set or data-mode="light") */
+html[data-mode="light"] {
+  --tableBackground      : #eaecf4;
+  --tableHeaderBackground : #dfe3f0;
+  --tableHeaderText     : #0e1420;
+  --tableRowBackground   : #eaecf4;
+  --tableRowHover        : #dfe3f0;
+  --tableBorder          : #d0d8f0;
+  --tableText           : #0e1420;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    THEME-SPECIFIC COLOR OVERRIDES
-   Applied via data-theme attribute on html element
-   Light/dark mode toggled via body.colorscheme-light / body.colorscheme-dark
+   Applied via data-theme and data-mode attributes on html element
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ── EMBER DRIFT ───────────────────────────────────────────────────────────── */
-html[data-theme="ember_drift"] {
-  /* Dark mode (default) */
+html[data-theme="ember_drift"][data-mode="dark"] {
+  /* Dark mode */
   --background          : #130e0a;
   --surface             : #1e1610;
   --surfaceElevated     : #2a1e16;
@@ -119,9 +159,17 @@ html[data-theme="ember_drift"] {
   --blockquoteBackground : #1e1810;
   --selection           : #5a2e18;
   --scrollbar           : #4a3020;
+  --quoteIcon           : rgba(240, 232, 224, 0.4);
+  --tableBackground      : #1e1610;
+  --tableHeaderBackground : #2a1e16;
+  --tableHeaderText     : #f0e8e0;
+  --tableRowBackground   : #1e1610;
+  --tableRowHover        : #2a1e16;
+  --tableBorder          : #352820;
+  --tableText           : #f0e8e0;
 }
 
-body.colorscheme-light html[data-theme="ember_drift"] {
+html[data-theme="ember_drift"][data-mode="light"] {
   --background          : #faf7f4;
   --surface             : #f4ede4;
   --surfaceElevated     : #ffffff;
@@ -136,16 +184,24 @@ body.colorscheme-light html[data-theme="ember_drift"] {
   --textInverse         : #faf7f4;
   --border              : #ddd0c4;
   --shadow              : rgba(60, 30, 10, 0.10);
-  --codeBackground      : #f0e8e0;
-  --codeText            : #9c2d00;
+  --codeBackground      : #f5f0e8;
+  --codeText            : #8b2d00;
   --blockquoteBackground : #f5ede4;
   --selection           : #f3c8a8;
   --scrollbar           : #c8b0a0;
+  --quoteIcon           : rgba(124, 106, 90, 0.5);
+  --tableBackground      : #f4ede4;
+  --tableHeaderBackground : #ede4d8;
+  --tableHeaderText     : #1c1410;
+  --tableRowBackground   : #f4ede4;
+  --tableRowHover        : #ede4d8;
+  --tableBorder          : #ddd0c4;
+  --tableText           : #1c1410;
 }
 
 /* ── VELVET ASH ────────────────────────────────────────────────────────────── */
-html[data-theme="velvet_ash"] {
-  /* Dark mode (default) */
+html[data-theme="velvet_ash"][data-mode="dark"] {
+  /* Dark mode */
   --background          : #0f0d12;
   --surface             : #18151e;
   --surfaceElevated     : #221e2a;
@@ -165,9 +221,17 @@ html[data-theme="velvet_ash"] {
   --blockquoteBackground : #1c1828;
   --selection           : #4a3870;
   --scrollbar           : #3a3050;
+  --quoteIcon           : rgba(236, 234, 244, 0.4);
+  --tableBackground      : #18151e;
+  --tableHeaderBackground : #221e2a;
+  --tableHeaderText     : #eceaf4;
+  --tableRowBackground   : #18151e;
+  --tableRowHover        : #221e2a;
+  --tableBorder          : #2e2838;
+  --tableText           : #eceaf4;
 }
 
-body.colorscheme-light html[data-theme="velvet_ash"] {
+html[data-theme="velvet_ash"][data-mode="light"] {
   --background          : #f7f6f8;
   --surface             : #eeedf2;
   --surfaceElevated     : #ffffff;
@@ -182,16 +246,24 @@ body.colorscheme-light html[data-theme="velvet_ash"] {
   --textInverse         : #f7f6f8;
   --border              : #d8d4e4;
   --shadow              : rgba(40, 30, 60, 0.10);
-  --codeBackground      : #eeecf4;
-  --codeText            : #6d2080;
+  --codeBackground      : #f2f0f8;
+  --codeText            : #5a3090;
   --blockquoteBackground : #f2f0f8;
   --selection           : #d0c4f0;
   --scrollbar           : #c0b8d0;
+  --quoteIcon           : rgba(107, 100, 120, 0.5);
+  --tableBackground      : #eeedf2;
+  --tableHeaderBackground : #e5e3ec;
+  --tableHeaderText     : #1a1820;
+  --tableRowBackground   : #eeedf2;
+  --tableRowHover        : #e5e3ec;
+  --tableBorder          : #d8d4e4;
+  --tableText           : #1a1820;
 }
 
 /* ── MIDNIGHT HEARTH ───────────────────────────────────────────────────────── */
-html[data-theme="midnight_hearth"] {
-  /* Dark mode (default) */
+html[data-theme="midnight_hearth"][data-mode="dark"] {
+  /* Dark mode */
   --background          : #080c18;
   --surface             : #0e1428;
   --surfaceElevated     : #162040;
@@ -204,16 +276,24 @@ html[data-theme="midnight_hearth"] {
   --textPrimary         : #dce8fc;
   --textMuted           : #7888a8;
   --textInverse         : #080c18;
-  --border              : #1c2840;
+  --border              : #0f1420;
   --shadow              : rgba(0, 0, 0, 0.50);
   --codeBackground      : #080e20;
   --codeText            : #c8a850;
   --blockquoteBackground : #0e1830;
   --selection           : #1c3060;
   --scrollbar           : #182040;
+  --quoteIcon           : rgba(220, 232, 252, 0.4);
+  --tableBackground      : #0e1428;
+  --tableHeaderBackground : #162040;
+  --tableHeaderText     : #dce8fc;
+  --tableRowBackground   : #0e1428;
+  --tableRowHover        : #162040;
+  --tableBorder          : #0f1420;
+  --tableText           : #dce8fc;
 }
 
-body.colorscheme-light html[data-theme="midnight_hearth"] {
+html[data-theme="midnight_hearth"][data-mode="light"] {
   --background          : #f4f6fb;
   --surface             : #eaecf4;
   --surfaceElevated     : #ffffff;
@@ -228,16 +308,24 @@ body.colorscheme-light html[data-theme="midnight_hearth"] {
   --textInverse         : #f4f6fb;
   --border              : #d0d8f0;
   --shadow              : rgba(20, 30, 80, 0.10);
-  --codeBackground      : #e8ecf8;
-  --codeText            : #1e3a8a;
+  --codeBackground      : #f0f4fa;
+  --codeText            : #1a4aa0;
   --blockquoteBackground : #edf0fa;
   --selection           : #c0d0f0;
   --scrollbar           : #b8c4e0;
+  --quoteIcon           : rgba(90, 100, 128, 0.5);
+  --tableBackground      : #eaecf4;
+  --tableHeaderBackground : #dfe3f0;
+  --tableHeaderText     : #0e1420;
+  --tableRowBackground   : #eaecf4;
+  --tableRowHover        : #dfe3f0;
+  --tableBorder          : #d0d8f0;
+  --tableText           : #0e1420;
 }
 
 /* ── OLIVE DUSK ────────────────────────────────────────────────────────────── */
-html[data-theme="olive_dusk"] {
-  /* Dark mode (default) */
+html[data-theme="olive_dusk"][data-mode="dark"] {
+  /* Dark mode */
   --background          : #0c0f08;
   --surface             : #141a0e;
   --surfaceElevated     : #1e2818;
@@ -257,9 +345,17 @@ html[data-theme="olive_dusk"] {
   --blockquoteBackground : #141c0c;
   --selection           : #304020;
   --scrollbar           : #283018;
+  --quoteIcon           : rgba(228, 234, 216, 0.4);
+  --tableBackground      : #141a0e;
+  --tableHeaderBackground : #1e2818;
+  --tableHeaderText     : #e4ead8;
+  --tableRowBackground   : #141a0e;
+  --tableRowHover        : #1e2818;
+  --tableBorder          : #283018;
+  --tableText           : #e4ead8;
 }
 
-body.colorscheme-light html[data-theme="olive_dusk"] {
+html[data-theme="olive_dusk"][data-mode="light"] {
   --background          : #f6f5ef;
   --surface             : #edeee4;
   --surfaceElevated     : #f9f9f4;
@@ -274,16 +370,24 @@ body.colorscheme-light html[data-theme="olive_dusk"] {
   --textInverse         : #f6f5ef;
   --border              : #d4d8c0;
   --shadow              : rgba(20, 30, 10, 0.10);
-  --codeBackground      : #eaeee0;
-  --codeText            : #2d4a10;
+  --codeBackground      : #f0f4e8;
+  --codeText            : #3a5a18;
   --blockquoteBackground : #f0f2e8;
   --selection           : #ccd8a8;
   --scrollbar           : #b8c0a0;
+  --quoteIcon           : rgba(98, 104, 80, 0.5);
+  --tableBackground      : #edeee4;
+  --tableHeaderBackground : #e4e6d8;
+  --tableHeaderText     : #1a1e14;
+  --tableRowBackground   : #edeee4;
+  --tableRowHover        : #e4e6d8;
+  --tableBorder          : #d4d8c0;
+  --tableText           : #1a1e14;
 }
 
 /* ── CINDER GLOW ───────────────────────────────────────────────────────────── */
-html[data-theme="cinder_glow"] {
-  /* Dark mode (default) */
+html[data-theme="cinder_glow"][data-mode="dark"] {
+  /* Dark mode */
   --background          : #0a0a0a;
   --surface             : #151515;
   --surfaceElevated     : #202020;
@@ -303,9 +407,17 @@ html[data-theme="cinder_glow"] {
   --blockquoteBackground : #1a1a1a;
   --selection           : #164e63;
   --scrollbar           : #2d3748;
+  --quoteIcon           : rgba(241, 245, 249, 0.4);
+  --tableBackground      : #151515;
+  --tableHeaderBackground : #202020;
+  --tableHeaderText     : #f1f5f9;
+  --tableRowBackground   : #151515;
+  --tableRowHover        : #202020;
+  --tableBorder          : #2d3748;
+  --tableText           : #f1f5f9;
 }
 
-body.colorscheme-light html[data-theme="cinder_glow"] {
+html[data-theme="cinder_glow"][data-mode="light"] {
   --background          : #f5f5f5;
   --surface             : #ebebeb;
   --surfaceElevated     : #ffffff;
@@ -320,10 +432,18 @@ body.colorscheme-light html[data-theme="cinder_glow"] {
   --textInverse         : #f5f5f5;
   --border              : #d4d4d4;
   --shadow              : rgba(0, 0, 0, 0.08);
-  --codeBackground      : #e8e8e8;
-  --codeText            : #0670a0;
+  --codeBackground      : #f0f4f8;
+  --codeText            : #066090;
   --blockquoteBackground : #eeeeee;
   --selection           : #b8e4f0;
   --scrollbar           : #c0c0c0;
+  --quoteIcon           : rgba(107, 114, 128, 0.5);
+  --tableBackground      : #ebebeb;
+  --tableHeaderBackground : #e0e0e0;
+  --tableHeaderText     : #111111;
+  --tableRowBackground   : #ebebeb;
+  --tableRowHover        : #e0e0e0;
+  --tableBorder          : #d4d4d4;
+  --tableText           : #111111;
 }
 

@@ -2,3 +2,76 @@
   You can add further sections here if they should
   appear after the "about" section.
 */}}
+
+<section class="home-posts">
+  
+  <div class="posts-list">
+    {{ $posts := where site.RegularPages "Type" "posts" }}
+    {{ $currentYear := "" }}
+    {{ $globalCounter := 0 }}
+    {{ $yearCounts := dict }}
+    
+    {{ range $posts }}
+      {{ $year := .Date.Format "2006" }}
+      {{ $currentCount := index $yearCounts $year | default 0 }}
+      {{ $yearCounts = merge $yearCounts (dict $year (add $currentCount 1)) }}
+    {{ end }}
+
+    {{ $currentYear = "" }}
+    {{ range first 5 $posts }}
+      {{ $year := .Date.Format "2006" }}
+      {{ if ne $year $currentYear }}
+        {{ if ne $currentYear "" }}
+          </div> <!-- close year-posts -->
+          </div> <!-- close previous year-group -->
+        {{ end }}
+        {{ $currentYear = $year }}
+        <div class="year-group">
+          <div class="year-header">
+            <span class="year-title">{{ $year }}</span>
+            <span class="year-count">{{ index $yearCounts $year }} posts</span>
+          </div>
+          <div class="year-posts">
+      {{ end }}
+
+      {{ $globalCounter = add $globalCounter 1 }}
+      {{ $tagList := "" }}
+      {{ with .Params.tags }}
+        {{ $tagList = delimit . "," | lower }}
+      {{ end }}
+      
+      <article class="post-item" data-tags="{{ $tagList }}">
+        <div class="post-number">{{ printf "%02d" $globalCounter }}</div>
+        <div class="post-content">
+          <div class="post-meta-top">
+            <span class="post-views" data-goatcounter-page="{{ .RelPermalink }}">-- views</span>
+            <span class="meta-separator">•</span>
+            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02" }}</time>
+          </div>
+          <a class="post-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+          <div class="post-meta-bottom">
+            <span class="post-reading">{{ .ReadingTime }} min read</span>
+            {{ if .Params.tags }}
+              <span class="meta-separator">•</span>
+              <span class="post-tags">
+                {{ range $i, $tag := .Params.tags }}
+                  {{ if $i }}{{ end }}
+                  <a class="post-tag" href="{{ "tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
+                {{ end }}
+              </span>
+            {{ end }}
+          </div>
+        </div>
+      </article>
+
+    {{ end }}
+    {{ if ne $currentYear "" }}
+      </div> <!-- close year-posts -->
+      </div> <!-- close last year-group -->
+    {{ end }}
+  </div>
+  
+  <div class="view-all">
+    <a href="/posts/" class="btn">View All Posts</a>
+  </div>
+</section>

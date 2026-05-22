@@ -52,30 +52,25 @@
 
             <div class="post-title">
               <h1 class="title">
-                <a class="title-link" href="{{ .Permalink | safeURL }}">
-                  {{ .Title }}
-                </a>
+                {{ .Title }}
               </h1>
             </div>
 
-            <!-- Custom Meta Bar -->
-            <div class="post-meta">
-              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                {{ .Date.Format "Jan 02, 2006" }}
-              </time>
-              <span class="meta-separator">·</span>
-              <span class="reading-time">{{ .ReadingTime }} min read</span>
-              
-              <!-- GoatCounter Views Counter Placeholder -->
-              <span class="meta-separator" id="views-separator" style="display: none;">·</span>
-              <span id="post-views" style="display: none;"></span>
+            <!-- Custom Meta Bar - List Style -->
+            <div class="post-meta-top">
+              <span class="post-views" data-goatcounter-page="{{ .RelPermalink }}">-- views</span>
+              <span class="meta-separator">•</span>
+              <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+            </div>
 
-              <!-- Tag chips in the meta bar -->
+            <div class="post-meta-bottom">
+              <span class="post-reading">{{ .ReadingTime }} min read</span>
               {{ if .Params.tags }}
-                <span class="meta-separator">·</span>
-                <span class="meta-tags">
-                  {{ range .Params.tags }}
-                    <a class="tag-chip" href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                <span class="meta-separator">•</span>
+                <span class="post-tags">
+                  {{ range $i, $tag := .Params.tags }}
+                    {{ if $i }}{{ end }}
+                    <a class="post-tag" href="{{ "tags/" | relURL }}{{ $tag | urlize }}/">{{ $tag }}</a>
                   {{ end }}
                 </span>
               {{ end }}
@@ -134,6 +129,10 @@
 
   {{ template "_internal/google_analytics.html" . }}
   {{- partial "body/extensions" . -}}
+  
+  <!-- GoatCounter Analytics -->
+  <script data-goatcounter="https://femar.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>
