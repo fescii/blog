@@ -680,26 +680,25 @@ h6 { font-size: var(--text-xs) !important; }
 
 		.tags-list {
 			display: flex;
-			flex-wrap: nowrap;
+			flex-wrap: wrap;
 			gap: var(--space-2);
 			justify-content: flex-start;
 			max-width: 100%;
-			overflow-x: auto;
-			overflow-y: hidden;
 			width: 100%;
-			scrollbar-width: none;
-			-ms-overflow-style: none;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
 
 			@media only screen and (max-width: 700px) {
+				flex-wrap: nowrap;
 				gap: var(--space-1);
 				width: 100%;
 				max-width: 100%;
 				overflow-x: auto;
 				overflow-y: hidden;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
 			}
 
 			.tag-link {
@@ -1274,7 +1273,7 @@ pre {
 	padding-left: 0;
 }
 
-.year-group  { margin-bottom: var(--space-8); }
+.year-group  { margin-bottom: var(--space-6); }
 
 .year-heading {
 	font-family: var(--font-heading);

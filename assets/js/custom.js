@@ -246,16 +246,10 @@
         });
       }
 
-      // Also hide empty years if no items are visible at all
-      const yearGroups = document.querySelectorAll('.year-group');
-      let anyVisible = false;
-      yearGroups.forEach(group => {
-        if (group.style.display !== 'none') {
-          anyVisible = true;
-        }
-      });
-
-      if (!anyVisible) {
+      // Check if any post items are visible to show/hide "no results" message
+      const visibleItems = document.querySelectorAll('.post-item:not(.hidden)');
+      
+      if (visibleItems.length === 0) {
         // Show a "no results" message
         if (!document.querySelector('.no-results')) {
           const noResults = document.createElement('div');
