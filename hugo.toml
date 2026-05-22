@@ -39,6 +39,11 @@ enableRobotsTXT = true
     icon = "fa-brands fa-linkedin"
     url = "https://linkedin.com/in/iamfemar"
     weight = 3
+  
+  [sitemap]
+    changefreq = "monthly"
+    filename = "sitemap.xml"
+    priority = 0.5
 
   [params.giscus]
     repo = "fescii/femar"
@@ -55,8 +60,10 @@ enableRobotsTXT = true
     loading = "lazy"
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "sitemap"]
   section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
 
 [[menu.main]]
   name = "About"
