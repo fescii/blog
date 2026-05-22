@@ -60,10 +60,8 @@ enableRobotsTXT = true
     loading = "lazy"
 
 [outputs]
-  home = ["HTML", "RSS", "sitemap"]
+  home = ["HTML", "RSS"]
   section = ["HTML", "RSS"]
-  taxonomy = ["HTML", "RSS"]
-  term = ["HTML", "RSS"]
 
 [[menu.main]]
   name = "About"
