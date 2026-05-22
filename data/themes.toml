@@ -1,0 +1,332 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# themes.toml — Premium Blog Theme System
+# Hugo-compatible tonal palette definitions
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# ARCHITECTURE
+# ─────────────────────────────────────────────────────────────────────────────
+# Each theme has two sub-tables: [themes.<name>.light] and [themes.<name>.dark]
+# The selected theme controls emotional atmosphere and tonal identity.
+# The dark/light toggle controls brightness mode globally.
+# All token names are semantic — they map directly to CSS custom properties.
+#
+# TOKEN GLOSSARY
+# ─────────────────────────────────────────────────────────────────────────────
+#   background          — page canvas; the outermost layer
+#   surface             — component backgrounds (headers, sidebars)
+#   surfaceElevated     — cards, modals, code blocks — one layer above surface
+#   surfaceSunken       — inset areas, blockquotes — one layer below surface
+#   primary             — dominant accent; links, active states, focus rings
+#   primaryHover        — primary tone shifted for hover interaction
+#   primarySubtle       — low-opacity primary for backgrounds/tints
+#   secondary           — supporting accent; badges, secondary buttons
+#   tertiary            — rare highlight; active tags, special callouts
+#   textPrimary         — body copy, headings
+#   textMuted           — meta, captions, placeholders
+#   textInverse         — text on accent-colored backgrounds
+#   border              — dividers, input outlines, tag borders
+#   shadow              — box-shadow color (semi-transparent)
+#   codeBackground      — inline and block code background
+#   codeText            — inline code foreground color
+#   blockquoteBackground— blockquote region fill
+#   selection          — ::selection highlight color
+#   scrollbar           — scrollbar thumb tint
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# THEME 1 — Ember Drift
+# ──────────────────────────────────────────────────────────────────────────────
+# Mood: The warmth of a dying fire — amber embers cooling to gray-brown ash.
+# Atmosphere: Late evening at a craft workspace. Analog warmth. Purposeful.
+# Accent logic: Rich amber primary that shifts toward sienna on hover.
+# Reading comfort: Warm-tinted neutrals reduce blue-light eye strain.
+# OLED: Dark mode uses near-black warm brown, not pure black.
+# Best for: Technical writing, personal essays, dev blogs with personality.
+# ──────────────────────────────────────────────────────────────────────────────
+
+[themes.ember_drift]
+  label       = "Ember Drift"
+  description = "Warm amber embers cooling into gray-brown ash. Analog, purposeful, late-evening craft."
+  mood        = "warm"
+
+  [themes.ember_drift.light]
+    background          = "#faf7f4"   # warm off-white, parchment-adjacent
+    surface             = "#f4ede4"   # creamy sand
+    surfaceElevated     = "#ffffff"   # pure white for cards — pops off surface
+    surfaceSunken       = "#ede4d8"   # pressed inset areas
+    primary             = "#c2440f"   # deep burnt sienna — strong, readable
+    primaryHover        = "#9c360a"   # darkens like a cooling coal
+    primarySubtle       = "#f3e8e1"   # near-transparent ember tint
+    secondary           = "#d97706"   # amber gold — supporting warmth
+    tertiary            = "#92400e"   # dark mahogany — rare, deliberate
+    textPrimary         = "#1c1410"   # very dark warm brown
+    textMuted           = "#7c6a5a"   # medium warm gray
+    textInverse         = "#faf7f4"   # light text on dark accents
+    border              = "#ddd0c4"   # warm taupe dividers
+    shadow              = "rgba(60, 30, 10, 0.10)"
+    codeBackground      = "#f0e8e0"   # warm light code surface
+    codeText            = "#9c2d00"   # dark sienna inline code
+    blockquoteBackground = "#f5ede4"  # barely perceptible amber tint
+    selection           = "#f3c8a8"   # warm peach selection
+    scrollbar           = "#c8b0a0"
+
+  [themes.ember_drift.dark]
+    background          = "#130e0a"   # near-black warm brown — OLED-friendly
+    surface             = "#1e1610"   # dark cocoa
+    surfaceElevated     = "#2a1e16"   # elevated card — slightly lighter
+    surfaceSunken       = "#100c08"   # deepest layer
+    primary             = "#e8844a"   # warm amber-orange — legible on dark
+    primaryHover        = "#f0a070"   # lightens toward ember glow
+    primarySubtle       = "#2a1a10"   # ember tint on dark
+    secondary           = "#c2893d"   # muted gold
+    tertiary            = "#e07050"   # orange-red for rare use
+    textPrimary         = "#f0e8e0"   # warm light cream
+    textMuted           = "#9c8070"   # warm mid-gray
+    textInverse         = "#130e0a"   # dark text on light accents
+    border              = "#352820"   # warm dark divider
+    shadow              = "rgba(0, 0, 0, 0.40)"
+    codeBackground      = "#1a120c"   # very dark warm surface
+    codeText            = "#f0a070"   # warm ember code text
+    blockquoteBackground = "#1e1810"  # barely-there tint
+    selection           = "#5a2e18"   # dark ember selection
+    scrollbar           = "#4a3020"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# THEME 2 — Velvet Ash
+# ──────────────────────────────────────────────────────────────────────────────
+# Mood: Soft charcoal and muted plum — editorial luxury without pretension.
+# Atmosphere: A well-designed print magazine. Calm authority. Considered.
+# Accent logic: Dusty mauve-purple that reads "curated", not "corporate".
+# Reading comfort: Cool-neutral surfaces with low contrast — long-form friendly.
+# OLED: True near-black dark mode base, zero pure-black harshness.
+# Best for: Long-form writing, essays, design-adjacent dev blogs.
+# ──────────────────────────────────────────────────────────────────────────────
+
+[themes.velvet_ash]
+  label       = "Velvet Ash"
+  description = "Soft charcoal and muted plum. Editorial luxury — calm, considered, print-inspired."
+  mood        = "cool-neutral"
+
+  [themes.velvet_ash.light]
+    background          = "#f7f6f8"   # near-white with the faintest lavender
+    surface             = "#eeedf2"   # cool ash-white
+    surfaceElevated     = "#ffffff"
+    surfaceSunken       = "#e5e3ec"
+    primary             = "#6d4fc2"   # rich dusty violet — editorial anchor
+    primaryHover        = "#5a3da8"
+    primarySubtle       = "#ede8f8"
+    secondary           = "#9b6bb5"   # muted plum
+    tertiary            = "#4a3080"   # deep grape — deliberate use only
+    textPrimary         = "#1a1820"   # near-black cool
+    textMuted           = "#6b6478"   # cool mid-gray with lavender undertone
+    textInverse         = "#f7f6f8"
+    border              = "#d8d4e4"   # cool lavender-gray dividers
+    shadow              = "rgba(40, 30, 60, 0.10)"
+    codeBackground      = "#eeecf4"
+    codeText            = "#6d2080"   # plum code text
+    blockquoteBackground = "#f2f0f8"
+    selection           = "#d0c4f0"
+    scrollbar           = "#c0b8d0"
+
+  [themes.velvet_ash.dark]
+    background          = "#0f0d12"   # near-black with faint violet
+    surface             = "#18151e"   # dark plum-gray
+    surfaceElevated     = "#221e2a"
+    surfaceSunken       = "#0c0a10"
+    primary             = "#a885f0"   # light violet — high contrast on dark
+    primaryHover        = "#c0a0f8"
+    primarySubtle       = "#221840"
+    secondary           = "#b070d0"   # pastel plum
+    tertiary            = "#d0a0e8"   # soft lilac for rare highlights
+    textPrimary         = "#eceaf4"   # cool off-white
+    textMuted           = "#8c84a0"   # muted lavender-gray
+    textInverse         = "#0f0d12"
+    border              = "#2e2838"   # dark violet divider
+    shadow              = "rgba(0, 0, 0, 0.45)"
+    codeBackground      = "#161320"
+    codeText            = "#c0a0f8"
+    blockquoteBackground = "#1c1828"
+    selection           = "#4a3870"
+    scrollbar           = "#3a3050"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# THEME 3 — Midnight Hearth
+# ──────────────────────────────────────────────────────────────────────────────
+# Mood: Deep navy midnight warmed by a single fireplace glow.
+# Atmosphere: A private library at 2am. Focused. Immersive. Slightly cinematic.
+# Accent logic: Gold accent that implies warmth against cold blue depth.
+# Reading comfort: Dark navy is significantly easier on eyes than pure black
+#                  for extended night reading. Warm accent pulls focus gently.
+# OLED: Dark mode base is deep navy, not black — avoids halo bloom on OLED.
+# Best for: Long dev posts, night-mode-first blogs, systems/infra writing.
+# ──────────────────────────────────────────────────────────────────────────────
+
+[themes.midnight_hearth]
+  label       = "Midnight Hearth"
+  description = "Deep navy midnight warmed by a fireplace glow. Private library, 2am, focused."
+  mood        = "deep-cool"
+
+  [themes.midnight_hearth.light]
+    background          = "#f4f6fb"   # cool blue-tinted white
+    surface             = "#eaecf4"   # slate-blue surface
+    surfaceElevated     = "#ffffff"
+    surfaceSunken       = "#dfe3f0"
+    primary             = "#1e40af"   # classic deep blue — grounded, trustworthy
+    primaryHover        = "#1730a0"
+    primarySubtle       = "#e0e8ff"
+    secondary           = "#b08040"   # warm gold — the "hearth" counterpoint
+    tertiary            = "#0f2060"   # midnight deep blue
+    textPrimary         = "#0e1420"   # near-black with blue undertone
+    textMuted           = "#5a6480"   # slate gray
+    textInverse         = "#f4f6fb"
+    border              = "#d0d8f0"
+    shadow              = "rgba(20, 30, 80, 0.10)"
+    codeBackground      = "#e8ecf8"
+    codeText            = "#1e3a8a"
+    blockquoteBackground = "#edf0fa"
+    selection           = "#c0d0f0"
+    scrollbar           = "#b8c4e0"
+
+  [themes.midnight_hearth.dark]
+    background          = "#080c18"   # deep navy — not black
+    surface             = "#0e1428"   # midnight navy
+    surfaceElevated     = "#162040"   # elevated card — slightly lighter navy
+    surfaceSunken       = "#060a14"
+    primary             = "#c8a850"   # hearth gold — warm against deep navy
+    primaryHover        = "#e0c070"   # brighter gold on hover
+    primarySubtle       = "#1a1800"   # gold tint on dark
+    secondary           = "#6080d0"   # cool periwinkle — complementary to gold
+    tertiary            = "#f0d080"   # bright gold — rare emphasis
+    textPrimary         = "#dce8fc"   # cool white-blue
+    textMuted           = "#7888a8"   # slate blue-gray
+    textInverse         = "#080c18"
+    border              = "#1c2840"   # dark navy divider
+    shadow              = "rgba(0, 0, 0, 0.50)"
+    codeBackground      = "#080e20"   # deepest navy code surface
+    codeText            = "#c8a850"   # gold inline code on dark
+    blockquoteBackground = "#0e1830"
+    selection           = "#1c3060"
+    scrollbar           = "#182040"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# THEME 4 — Olive Dusk
+# ──────────────────────────────────────────────────────────────────────────────
+# Mood: The hour between golden hour and full dark — earthy olives and muted sage.
+# Atmosphere: Outdoor workspace, field notes, naturalist's journal.
+# Accent logic: Earthy green-gold primary. Feels organic, not techy.
+# Reading comfort: Green-based neutrals are among the most relaxing for prose.
+#                  Low saturation prevents the "Matrix green" feel.
+# OLED: Deep olive-black base — near-black but unmistakably earthy.
+# Best for: Technical content with a human voice, sustainability topics, writing.
+# ──────────────────────────────────────────────────────────────────────────────
+
+[themes.olive_dusk]
+  label       = "Olive Dusk"
+  description = "Earthy olives and muted sage at the edge of golden hour. Organic, naturalist, grounded."
+  mood        = "earthy-warm"
+
+  [themes.olive_dusk.light]
+    background          = "#f6f5ef"   # warm white with the faintest khaki tint
+    surface             = "#edeee4"   # sage-cream
+    surfaceElevated     = "#f9f9f4"
+    surfaceSunken       = "#e4e6d8"
+    primary             = "#4a6728"   # forest olive — confident, grounded
+    primaryHover        = "#3a5218"
+    primarySubtle       = "#e8f0dc"
+    secondary           = "#8a7040"   # muted gold-brown
+    tertiary            = "#306040"   # deep forest for rare emphasis
+    textPrimary         = "#1a1e14"   # near-black with green undertone
+    textMuted           = "#626850"   # olive-tinted gray
+    textInverse         = "#f6f5ef"
+    border              = "#d4d8c0"   # sage-gray dividers
+    shadow              = "rgba(20, 30, 10, 0.10)"
+    codeBackground      = "#eaeee0"
+    codeText            = "#2d4a10"   # dark leaf green
+    blockquoteBackground = "#f0f2e8"
+    selection           = "#ccd8a8"
+    scrollbar           = "#b8c0a0"
+
+  [themes.olive_dusk.dark]
+    background          = "#0c0f08"   # deep olive-black — OLED-friendly
+    surface             = "#141a0e"   # dark forest floor
+    surfaceElevated     = "#1e2818"
+    surfaceSunken       = "#090c06"
+    primary             = "#90b858"   # bright sage-lime — vivid against dark
+    primaryHover        = "#aad070"
+    primarySubtle       = "#1a2010"
+    secondary           = "#c8a848"   # warm gold
+    tertiary            = "#b0e080"   # bright green for rare highlights
+    textPrimary         = "#e4ead8"   # warm off-white with sage tint
+    textMuted           = "#7a8860"   # muted sage-gray
+    textInverse         = "#0c0f08"
+    border              = "#283018"   # dark olive divider
+    shadow              = "rgba(0, 0, 0, 0.45)"
+    codeBackground      = "#0e1408"
+    codeText            = "#90b858"   # sage code text
+    blockquoteBackground = "#141c0c"
+    selection           = "#304020"
+    scrollbar           = "#283018"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# THEME 5 — Cinder Glow
+# ──────────────────────────────────────────────────────────────────────────────
+# Mood: Industrial cool — dark steel and graphite with a single electric accent.
+# Atmosphere: Terminal window. Server room ambience. Precise and minimal.
+# Accent logic: Bright cyan-teal primary. High-contrast, technical, futuristic.
+# Reading comfort: Neutral gray backgrounds are the most versatile for code-heavy
+#                  content. No warm or cool tint — pure legibility focus.
+# OLED: True near-black dark mode with pure neutral gray stack.
+# Best for: Developer tools, infrastructure posts, highly technical writing.
+# ──────────────────────────────────────────────────────────────────────────────
+
+[themes.cinder_glow]
+  label       = "Cinder Glow"
+  description = "Dark steel and graphite with electric cyan accent. Terminal precision meets calm restraint."
+  mood        = "cool-technical"
+
+  [themes.cinder_glow.light]
+    background          = "#f5f5f5"   # pure neutral off-white
+    surface             = "#ebebeb"   # light gray
+    surfaceElevated     = "#ffffff"
+    surfaceSunken       = "#e0e0e0"
+    primary             = "#0891b2"   # strong cyan — technical, precise
+    primaryHover        = "#0670a0"
+    primarySubtle       = "#dcf0f8"
+    secondary           = "#6b7280"   # neutral gray — minimal UI support
+    tertiary            = "#0e6090"   # deep teal for emphasis
+    textPrimary         = "#111111"   # near-black
+    textMuted           = "#6b7280"   # neutral gray
+    textInverse         = "#f5f5f5"
+    border              = "#d4d4d4"
+    shadow              = "rgba(0, 0, 0, 0.08)"
+    codeBackground      = "#e8e8e8"
+    codeText            = "#0670a0"
+    blockquoteBackground = "#eeeeee"
+    selection           = "#b8e4f0"
+    scrollbar           = "#c0c0c0"
+
+  [themes.cinder_glow.dark]
+    background          = "#0a0a0a"   # near-black neutral — OLED-safe
+    surface             = "#141414"   # dark charcoal
+    surfaceElevated     = "#1e1e1e"   # classic VS Code surface
+    surfaceSunken       = "#080808"
+    primary             = "#22d3ee"   # electric cyan — glows on dark
+    primaryHover        = "#67e8f9"   # brighter on hover
+    primarySubtle       = "#001820"   # deep cyan tint
+    secondary           = "#94a3b8"   # cool slate
+    tertiary            = "#a0e8f8"   # pale cyan for rare highlights
+    textPrimary         = "#e8e8e8"   # cool off-white
+    textMuted           = "#808080"   # pure neutral gray
+    textInverse         = "#0a0a0a"
+    border              = "#2a2a2a"   # dark neutral divider
+    shadow              = "rgba(0, 0, 0, 0.50)"
+    codeBackground      = "#0e0e0e"   # deepest code surface
+    codeText            = "#22d3ee"   # cyan inline code — terminal feel
+    blockquoteBackground = "#161616"
+    selection           = "#003040"
+    scrollbar           = "#303030"

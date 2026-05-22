@@ -1,0 +1,329 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   _tokens.scss — Single source of truth for all design tokens
+   All values assume 1rem = 16px (html reset to 100%).
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Font Families ──────────────────────────────────────────────────────── */
+  --font-heading : 'Plus Jakarta Sans', sans-serif;
+  --font-body    : 'Inter', sans-serif;
+  --font-ui      : 'Work Sans', sans-serif;
+  --font-mono    : 'JetBrains Mono', monospace;
+
+  /* ── Type Scale (1rem = 16px) ───────────────────────────────────────────── */
+  --text-2xs  : 0.6875rem;  /* 11px  — micro labels, card desc              */
+  --text-xs   : 0.75rem;    /* 12px  — tags, chips, filter pills             */
+  --text-sm   : 0.8125rem;  /* 13px  — card title, meta text, footer         */
+  --text-base : 1rem;       /* 16px  — body, post content, nav links         */
+  --text-lg   : 1.125rem;   /* 18px  — nav site title, large labels          */
+  --text-xl   : 1.375rem;   /* 22px  — year headings, section titles         */
+  --text-2xl  : 1.75rem;    /* 28px  — single post title                     */
+  --text-3xl  : 2.25rem;    /* 36px  — hero / homepage h1 only               */
+
+  /* ── Font Weights ───────────────────────────────────────────────────────── */
+  --weight-normal   : 400;
+  --weight-medium   : 500;
+  --weight-semibold : 600;
+  --weight-bold     : 700;
+
+  /* ── Line Heights ───────────────────────────────────────────────────────── */
+  --leading-tight   : 1.2;   /* headings                                      */
+  --leading-snug    : 1.35;  /* compact UI, cards                             */
+  --leading-normal  : 1.6;   /* nav, labels                                   */
+  --leading-relaxed : 1.75;  /* body text                                     */
+  --leading-loose   : 1.85;  /* long-form content                             */
+
+  /* ── Letter Spacing ─────────────────────────────────────────────────────── */
+  --tracking-tight  : -0.02em;  /* headings                                   */
+  --tracking-normal :  0;
+  --tracking-wide   :  0.03em;  /* all-caps labels, tags                      */
+  --tracking-wider  :  0.06em;  /* category pills                             */
+
+  /* ── Spacing Scale (8px grid) ───────────────────────────────────────────── */
+  --space-1  : 0.25rem;   /*  4px  */
+  --space-2  : 0.5rem;    /*  8px  */
+  --space-3  : 0.75rem;   /* 12px  */
+  --space-4  : 1rem;      /* 16px  */
+  --space-5  : 1.25rem;   /* 20px  */
+  --space-6  : 1.5rem;    /* 24px  */
+  --space-8  : 2rem;      /* 32px  */
+  --space-10 : 2.5rem;    /* 40px  */
+  --space-12 : 3rem;      /* 48px  */
+  --space-16 : 4rem;      /* 64px  */
+
+  /* ── Border Radius ──────────────────────────────────────────────────────── */
+  --radius-sm   : 4px;
+  --radius-md   : 6px;
+  --radius-lg   : 8px;
+  --radius-xl   : 12px;
+  --radius-pill : 999px;
+
+  /* ── Icon / UI Element Sizes ────────────────────────────────────────────── */
+  --icon-sm  : 16px;
+  --icon-md  : 18px;
+  --icon-lg  : 24px;
+  --btn-icon : 36px;   /* circular icon-button diameter                       */
+
+  /* ── Layout & Containers ────────────────────────────────────────────────── */
+  --container-max-width : 56.25rem;  /* 900px — matches original theme intent at 16px base */
+  --container-padding   : var(--space-5);  /* 20px side gutters */
+
+  /* ── COLOR TOKENS — Default: Midnight Hearth (Dark) ───────────────────── */
+  --background          : #080c18;
+  --surface             : #0e1428;
+  --surfaceElevated     : #162040;
+  --surfaceSunken       : #060a14;
+  --primary             : #c8a850;
+  --primaryHover        : #e0c070;
+  --primarySubtle       : #1a1800;
+  --secondary           : #6080d0;
+  --tertiary            : #f0d080;
+  --textPrimary         : #dce8fc;
+  --textMuted           : #7888a8;
+  --textInverse         : #080c18;
+  --border              : #1c2840;
+  --shadow              : rgba(0, 0, 0, 0.50);
+  --codeBackground      : #080e20;
+  --codeText            : #c8a850;
+  --blockquoteBackground : #0e1830;
+  --selection           : #1c3060;
+  --scrollbar           : #182040;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   THEME-SPECIFIC COLOR OVERRIDES
+   Applied via data-theme attribute on html element
+   Light/dark mode toggled via body.colorscheme-light / body.colorscheme-dark
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── EMBER DRIFT ───────────────────────────────────────────────────────────── */
+html[data-theme="ember_drift"] {
+  /* Dark mode (default) */
+  --background          : #130e0a;
+  --surface             : #1e1610;
+  --surfaceElevated     : #2a1e16;
+  --surfaceSunken       : #100c08;
+  --primary             : #e8844a;
+  --primaryHover        : #f0a070;
+  --primarySubtle       : #2a1a10;
+  --secondary           : #c2893d;
+  --tertiary            : #e07050;
+  --textPrimary         : #f0e8e0;
+  --textMuted           : #9c8070;
+  --textInverse         : #130e0a;
+  --border              : #352820;
+  --shadow              : rgba(0, 0, 0, 0.40);
+  --codeBackground      : #1a120c;
+  --codeText            : #f0a070;
+  --blockquoteBackground : #1e1810;
+  --selection           : #5a2e18;
+  --scrollbar           : #4a3020;
+}
+
+body.colorscheme-light html[data-theme="ember_drift"] {
+  --background          : #faf7f4;
+  --surface             : #f4ede4;
+  --surfaceElevated     : #ffffff;
+  --surfaceSunken       : #ede4d8;
+  --primary             : #c2440f;
+  --primaryHover        : #9c360a;
+  --primarySubtle       : #f3e8e1;
+  --secondary           : #d97706;
+  --tertiary            : #92400e;
+  --textPrimary         : #1c1410;
+  --textMuted           : #7c6a5a;
+  --textInverse         : #faf7f4;
+  --border              : #ddd0c4;
+  --shadow              : rgba(60, 30, 10, 0.10);
+  --codeBackground      : #f0e8e0;
+  --codeText            : #9c2d00;
+  --blockquoteBackground : #f5ede4;
+  --selection           : #f3c8a8;
+  --scrollbar           : #c8b0a0;
+}
+
+/* ── VELVET ASH ────────────────────────────────────────────────────────────── */
+html[data-theme="velvet_ash"] {
+  /* Dark mode (default) */
+  --background          : #0f0d12;
+  --surface             : #18151e;
+  --surfaceElevated     : #221e2a;
+  --surfaceSunken       : #0c0a10;
+  --primary             : #a885f0;
+  --primaryHover        : #c0a0f8;
+  --primarySubtle       : #221840;
+  --secondary           : #b070d0;
+  --tertiary            : #d0a0e8;
+  --textPrimary         : #eceaf4;
+  --textMuted           : #8c84a0;
+  --textInverse         : #0f0d12;
+  --border              : #2e2838;
+  --shadow              : rgba(0, 0, 0, 0.45);
+  --codeBackground      : #161320;
+  --codeText            : #c0a0f8;
+  --blockquoteBackground : #1c1828;
+  --selection           : #4a3870;
+  --scrollbar           : #3a3050;
+}
+
+body.colorscheme-light html[data-theme="velvet_ash"] {
+  --background          : #f7f6f8;
+  --surface             : #eeedf2;
+  --surfaceElevated     : #ffffff;
+  --surfaceSunken       : #e5e3ec;
+  --primary             : #6d4fc2;
+  --primaryHover        : #5a3da8;
+  --primarySubtle       : #ede8f8;
+  --secondary           : #9b6bb5;
+  --tertiary            : #4a3080;
+  --textPrimary         : #1a1820;
+  --textMuted           : #6b6478;
+  --textInverse         : #f7f6f8;
+  --border              : #d8d4e4;
+  --shadow              : rgba(40, 30, 60, 0.10);
+  --codeBackground      : #eeecf4;
+  --codeText            : #6d2080;
+  --blockquoteBackground : #f2f0f8;
+  --selection           : #d0c4f0;
+  --scrollbar           : #c0b8d0;
+}
+
+/* ── MIDNIGHT HEARTH ───────────────────────────────────────────────────────── */
+html[data-theme="midnight_hearth"] {
+  /* Dark mode (default) */
+  --background          : #080c18;
+  --surface             : #0e1428;
+  --surfaceElevated     : #162040;
+  --surfaceSunken       : #060a14;
+  --primary             : #c8a850;
+  --primaryHover        : #e0c070;
+  --primarySubtle       : #1a1800;
+  --secondary           : #6080d0;
+  --tertiary            : #f0d080;
+  --textPrimary         : #dce8fc;
+  --textMuted           : #7888a8;
+  --textInverse         : #080c18;
+  --border              : #1c2840;
+  --shadow              : rgba(0, 0, 0, 0.50);
+  --codeBackground      : #080e20;
+  --codeText            : #c8a850;
+  --blockquoteBackground : #0e1830;
+  --selection           : #1c3060;
+  --scrollbar           : #182040;
+}
+
+body.colorscheme-light html[data-theme="midnight_hearth"] {
+  --background          : #f4f6fb;
+  --surface             : #eaecf4;
+  --surfaceElevated     : #ffffff;
+  --surfaceSunken       : #dfe3f0;
+  --primary             : #1e40af;
+  --primaryHover        : #1730a0;
+  --primarySubtle       : #e0e8ff;
+  --secondary           : #b08040;
+  --tertiary            : #0f2060;
+  --textPrimary         : #0e1420;
+  --textMuted           : #5a6480;
+  --textInverse         : #f4f6fb;
+  --border              : #d0d8f0;
+  --shadow              : rgba(20, 30, 80, 0.10);
+  --codeBackground      : #e8ecf8;
+  --codeText            : #1e3a8a;
+  --blockquoteBackground : #edf0fa;
+  --selection           : #c0d0f0;
+  --scrollbar           : #b8c4e0;
+}
+
+/* ── OLIVE DUSK ────────────────────────────────────────────────────────────── */
+html[data-theme="olive_dusk"] {
+  /* Dark mode (default) */
+  --background          : #0c0f08;
+  --surface             : #141a0e;
+  --surfaceElevated     : #1e2818;
+  --surfaceSunken       : #090c06;
+  --primary             : #90b858;
+  --primaryHover        : #aad070;
+  --primarySubtle       : #1a2010;
+  --secondary           : #c8a848;
+  --tertiary            : #b0e080;
+  --textPrimary         : #e4ead8;
+  --textMuted           : #7a8860;
+  --textInverse         : #0c0f08;
+  --border              : #283018;
+  --shadow              : rgba(0, 0, 0, 0.45);
+  --codeBackground      : #0e1408;
+  --codeText            : #90b858;
+  --blockquoteBackground : #141c0c;
+  --selection           : #304020;
+  --scrollbar           : #283018;
+}
+
+body.colorscheme-light html[data-theme="olive_dusk"] {
+  --background          : #f6f5ef;
+  --surface             : #edeee4;
+  --surfaceElevated     : #f9f9f4;
+  --surfaceSunken       : #e4e6d8;
+  --primary             : #4a6728;
+  --primaryHover        : #3a5218;
+  --primarySubtle       : #e8f0dc;
+  --secondary           : #8a7040;
+  --tertiary            : #306040;
+  --textPrimary         : #1a1e14;
+  --textMuted           : #626850;
+  --textInverse         : #f6f5ef;
+  --border              : #d4d8c0;
+  --shadow              : rgba(20, 30, 10, 0.10);
+  --codeBackground      : #eaeee0;
+  --codeText            : #2d4a10;
+  --blockquoteBackground : #f0f2e8;
+  --selection           : #ccd8a8;
+  --scrollbar           : #b8c0a0;
+}
+
+/* ── CINDER GLOW ───────────────────────────────────────────────────────────── */
+html[data-theme="cinder_glow"] {
+  /* Dark mode (default) */
+  --background          : #0a0a0a;
+  --surface             : #151515;
+  --surfaceElevated     : #202020;
+  --surfaceSunken       : #050505;
+  --primary             : #06b6d4;
+  --primaryHover        : #22d3ee;
+  --primarySubtle       : #082f46;
+  --secondary           : #64748b;
+  --tertiary            : #38bdf8;
+  --textPrimary         : #f1f5f9;
+  --textMuted           : #94a3b8;
+  --textInverse         : #0a0a0a;
+  --border              : #2d3748;
+  --shadow              : rgba(0, 0, 0, 0.50);
+  --codeBackground      : #0f0f0f;
+  --codeText            : #06b6d4;
+  --blockquoteBackground : #1a1a1a;
+  --selection           : #164e63;
+  --scrollbar           : #2d3748;
+}
+
+body.colorscheme-light html[data-theme="cinder_glow"] {
+  --background          : #f5f5f5;
+  --surface             : #ebebeb;
+  --surfaceElevated     : #ffffff;
+  --surfaceSunken       : #e0e0e0;
+  --primary             : #0891b2;
+  --primaryHover        : #0670a0;
+  --primarySubtle       : #dcf0f8;
+  --secondary           : #6b7280;
+  --tertiary            : #0e6090;
+  --textPrimary         : #111111;
+  --textMuted           : #6b7280;
+  --textInverse         : #f5f5f5;
+  --border              : #d4d4d4;
+  --shadow              : rgba(0, 0, 0, 0.08);
+  --codeBackground      : #e8e8e8;
+  --codeText            : #0670a0;
+  --blockquoteBackground : #eeeeee;
+  --selection           : #b8e4f0;
+  --scrollbar           : #c0c0c0;
+}
+

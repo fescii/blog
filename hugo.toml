@@ -1,0 +1,56 @@
+baseURL = 'https://femar.blog/'
+languageCode = 'en-us'
+title = 'Femar'
+
+enableRobotsTXT = true
+
+[markup.highlight]
+  style = "github-dark"
+
+[params]
+  author = "Fredrick Femar"
+  description = "A premium blog powered by Hugo."
+  colorScheme = "auto"
+  hideColorSchemeToggle = false
+  customSCSS = ["scss/custom.scss"]
+  customJS = ["js/custom.js"]
+  activeTheme = "midnight_hearth"
+  avatarURL = "images/me.jpg"
+
+  [params.giscus]
+    repo = "fescii/femar"
+    repoId = "R_kgDOXXXXXX"
+    category = "Announcements"
+    categoryId = "DIC_kwDOXXXXXX"
+    mapping = "pathname"
+    strict = "0"
+    reactionsEnabled = "1"
+    emitMetadata = "0"
+    inputPosition = "bottom"
+    theme = "preferred_color_scheme"
+    lang = "en"
+    loading = "lazy"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[[menu.main]]
+  name = "About"
+  weight = 1
+  url = "/about/"
+
+[[menu.main]]
+  name = "Posts"
+  weight = 2
+  url = "/posts/"
+
+[[menu.main]]
+  name = "Projects"
+  weight = 3
+  url = "/projects/"
+
+[[menu.main]]
+  name = "Contact"
+  weight = 4
+  url = "/contact/"

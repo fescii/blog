@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" data-theme="{{ .Site.Params.activeTheme | default "midnight_hearth" }}">
+
+<head>
+  <title>{{ .Title }} · {{ .Site.Title }}</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('blog-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+  {{ partial "head.html" . }}
+</head>
+
+{{ $csClass := "colorscheme-light" }}
+{{ if eq .Site.Params.colorScheme "dark" }}
+{{ $csClass = "colorscheme-dark" }}
+{{ else if eq .Site.Params.colorScheme "auto" }}
+{{ $csClass = "colorscheme-auto" }}
+{{ end }}
+
+<body class="preload-transitions {{ $csClass }}{{ if .Site.Params.rtl }} rtl{{ end }}">
+  <script>
+    (function() {
+      const savedColorScheme = localStorage.getItem('colorscheme');
+      if (savedColorScheme) {
+        document.body.classList.remove('colorscheme-light', 'colorscheme-dark', 'colorscheme-auto');
+        document.body.classList.add('colorscheme-' + savedColorScheme);
+        document.documentElement.style['color-scheme'] = savedColorScheme;
+      }
+    })();
+  </script>
+  {{ partial "float" . }}
+  <main class="wrapper">
+    {{ partial "header.html" . }}
+    {{ partial "themes.html" . }}
+
+    <div class="content">
+      {{ partial "list.html" . }}
+    </div>
+
+    {{ partial "footer.html" . }}
+  </main>
+
+  {{ if .Site.Params.disableDefaultJsScripts }}
+  {{ if not .Site.Params.hideColorSchemeToggle }}
+  {{ errorf "Invalid configuration. Default JS scripts are disabled, but 'hideColorSchemeToggle' is false." }}
+  {{end}}
+  {{ else if hugo.IsServer }}
+  {{ $script := resources.Get "js/coder.js" }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get "js/coder.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ range .Site.Params.customJS }}
+  {{ if hugo.IsServer }}
+  {{ $script := resources.Get . }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get . | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+  {{ end }}
+
+  {{ template "_internal/google_analytics.html" . }}
+  {{- partial "body/extensions" . -}}
+</body>
+
+</html>

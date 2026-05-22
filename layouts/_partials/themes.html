@@ -1,0 +1,21 @@
+<div class="theme-bar">
+  <div class="container">
+    <div class="theme-scroll">
+      {{ range $name, $t := .Site.Data.themes.themes }}
+      <div class="theme-card" data-theme="{{ $name }}">
+        <div class="theme-card-info">
+          <span class="theme-card-title">{{ $t.label }}</span>
+          <span class="theme-card-desc">{{ $t.description }}</span>
+        </div>
+        <div class="theme-card-swatches">
+          <span class="swatch-circle" style="background-color: {{ $t.light.primary }};" title="Light Primary"></span>
+          <span class="swatch-circle" style="background-color: {{ $t.light.background }}; border: 1px solid rgba(0,0,0,0.15);" title="Light Background"></span>
+          <span class="swatch-circle" style="background-color: {{ $t.dark.primary }};" title="Dark Primary"></span>
+          <span class="swatch-circle" style="background-color: {{ $t.dark.background }}; border: 1px solid rgba(255,255,255,0.15);" title="Dark Background"></span>
+        </div>
+        <button class="theme-select-btn" type="button">Select</button>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

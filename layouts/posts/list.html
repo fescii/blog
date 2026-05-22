@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" data-theme="{{ .Site.Params.activeTheme | default "midnight_hearth" }}">
+
+<head>
+  <title>Posts · {{ .Site.Title }}</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('blog-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+  {{ partial "head.html" . }}
+</head>
+
+{{ $csClass := "colorscheme-light" }}
+{{ if eq .Site.Params.colorScheme "dark" }}
+{{ $csClass = "colorscheme-dark" }}
+{{ else if eq .Site.Params.colorScheme "auto" }}
+{{ $csClass = "colorscheme-auto" }}
+{{ end }}
+
+<body class="preload-transitions {{ $csClass }}{{ if .Site.Params.rtl }} rtl{{ end }}">
+  <script>
+    (function() {
+      const savedColorScheme = localStorage.getItem('colorscheme');
+      if (savedColorScheme) {
+        document.body.classList.remove('colorscheme-light', 'colorscheme-dark', 'colorscheme-auto');
+        document.body.classList.add('colorscheme-' + savedColorScheme);
+        document.documentElement.style['color-scheme'] = savedColorScheme;
+      }
+    })();
+  </script>
+  {{ partial "float" . }}
+  <main class="wrapper">
+    {{ partial "header.html" . }}
+    {{ partial "themes.html" . }}
+
+    <div class="content">
+      <section class="container list">
+        <header>
+          <h1 class="title">
+            <a class="title-link" href="{{ .Permalink | safeURL }}">
+              Posts
+            </a>
+          </h1>
+        </header>
+
+        <!-- Tag Filter Bar -->
+        <div id="tag-filter-container"></div>
+
+        {{ .Content }}
+
+        <div class="posts-by-year">
+          {{ $pages := .Pages }}
+          {{ if .IsHome }}
+            {{ $pages = where .Site.RegularPages "Section" "posts" }}
+          {{ end }}
+
+          {{ $currentYear := "" }}
+          {{ range $pages }}
+            {{ $year := .Date.Format "2006" }}
+            {{ if ne $year $currentYear }}
+              {{ if ne $currentYear "" }}
+                </div></div> <!-- close previous year group's list and container -->
+              {{ end }}
+              {{ $currentYear = $year }}
+              <div class="year-group">
+                <h2 class="year-heading">{{ $year }}</h2>
+                <div class="year-posts">
+            {{ end }}
+
+            {{ $tagList := "" }}
+            {{ with .Params.tags }}
+              {{ $tagList = delimit . "," | lower }}
+            {{ end }}
+            
+            <article class="post-row" data-tags="{{ $tagList }}">
+              <div class="post-row-left">
+                <a class="post-row-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+                <div class="post-row-tags">
+                  {{ range .Params.tags }}
+                    <a class="tag-chip" href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                  {{ end }}
+                </div>
+              </div>
+              <div class="post-row-right">
+                <span class="post-row-date">{{ .Date.Format "Jan 02" }}</span>
+                <span class="post-row-separator">·</span>
+                <span class="post-row-reading">{{ .ReadingTime }} min read</span>
+              </div>
+            </article>
+
+          {{ end }}
+          {{ if ne $currentYear "" }}
+            </div></div> <!-- close last year group's list and container -->
+          {{ end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+      </section>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </main>
+
+  {{ if .Site.Params.disableDefaultJsScripts }}
+  {{ if not .Site.Params.hideColorSchemeToggle }}
+  {{ errorf "Invalid configuration. Default JS scripts are disabled, but 'hideColorSchemeToggle' is false." }}
+  {{end}}
+  {{ else if hugo.IsServer }}
+  {{ $script := resources.Get "js/coder.js" }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get "js/coder.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ range .Site.Params.customJS }}
+  {{ if hugo.IsServer }}
+  {{ $script := resources.Get . }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get . | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+  {{ end }}
+
+  {{ template "_internal/google_analytics.html" . }}
+  {{- partial "body/extensions" . -}}
+</body>
+
+</html>

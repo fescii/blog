@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" data-theme="{{ .Site.Params.activeTheme | default "midnight_hearth" }}">
+
+<head>
+  <title>{{ .Title }} · {{ .Site.Title }}</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('blog-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+  {{ partial "head.html" . }}
+</head>
+
+{{ $csClass := "colorscheme-light" }}
+{{ if eq .Site.Params.colorScheme "dark" }}
+{{ $csClass = "colorscheme-dark" }}
+{{ else if eq .Site.Params.colorScheme "auto" }}
+{{ $csClass = "colorscheme-auto" }}
+{{ end }}
+
+<body class="preload-transitions {{ $csClass }}{{ if .Site.Params.rtl }} rtl{{ end }}">
+  <script>
+    (function() {
+      const savedColorScheme = localStorage.getItem('colorscheme');
+      if (savedColorScheme) {
+        document.body.classList.remove('colorscheme-light', 'colorscheme-dark', 'colorscheme-auto');
+        document.body.classList.add('colorscheme-' + savedColorScheme);
+        document.documentElement.style['color-scheme'] = savedColorScheme;
+      }
+    })();
+  </script>
+  {{ partial "float" . }}
+  <main class="wrapper">
+    {{ partial "header.html" . }}
+    {{ partial "themes.html" . }}
+
+    <div class="content">
+      <section class="container post">
+        <article>
+          <header>
+            <!-- Category Pill above the Title -->
+            {{ if .Params.categories }}
+            <div class="post-categories">
+              {{ range .Params.categories }}
+                <a class="category-pill" href="{{ "categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+              {{ end }}
+            </div>
+            {{ end }}
+
+            <div class="post-title">
+              <h1 class="title">
+                <a class="title-link" href="{{ .Permalink | safeURL }}">
+                  {{ .Title }}
+                </a>
+              </h1>
+            </div>
+
+            <!-- Custom Meta Bar -->
+            <div class="post-meta">
+              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Date.Format "Jan 02, 2006" }}
+              </time>
+              <span class="meta-separator">·</span>
+              <span class="reading-time">{{ .ReadingTime }} min read</span>
+              
+              <!-- GoatCounter Views Counter Placeholder -->
+              <span class="meta-separator" id="views-separator" style="display: none;">·</span>
+              <span id="post-views" style="display: none;"></span>
+
+              <!-- Tag chips in the meta bar -->
+              {{ if .Params.tags }}
+                <span class="meta-separator">·</span>
+                <span class="meta-tags">
+                  {{ range .Params.tags }}
+                    <a class="tag-chip" href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                  {{ end }}
+                </span>
+              {{ end }}
+            </div>
+          </header>
+
+          {{ partial "toc.html" . }}
+
+          <div class="post-content">
+            {{ if .Params.featuredImage }}
+              <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image" class="featured-image"/>
+            {{ end }}
+            {{ .Content }}
+          </div>
+
+          <footer>
+            {{ partial "posts/series.html" . }}
+            {{ partial "posts/disqus.html" . }}
+            {{ partial "posts/commento.html" . }}
+            {{ partial "posts/utterances.html" . }}
+            {{ partial "posts/giscus.html" . }}
+            {{ partial "posts/mastodon.html" . }}
+            {{ partial "posts/telegram.html" . }}
+            {{ partial "posts/cusdis.html" . }}
+          </footer>
+        </article>
+
+        {{ partial "posts/math.html" . }}
+      </section>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </main>
+
+  {{ if .Site.Params.disableDefaultJsScripts }}
+  {{ if not .Site.Params.hideColorSchemeToggle }}
+  {{ errorf "Invalid configuration. Default JS scripts are disabled, but 'hideColorSchemeToggle' is false." }}
+  {{end}}
+  {{ else if hugo.IsServer }}
+  {{ $script := resources.Get "js/coder.js" }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get "js/coder.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ range .Site.Params.customJS }}
+  {{ if hugo.IsServer }}
+  {{ $script := resources.Get . }}
+  <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+  {{ $script := resources.Get . | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+  {{ end }}
+
+  {{ template "_internal/google_analytics.html" . }}
+  {{- partial "body/extensions" . -}}
+</body>
+
+</html>
